@@ -23,7 +23,7 @@ function BLCalculator() {
         position === 'long'
             ? exitPrice / entryPrice - 1
             : position === 'short'
-              ? entryPrice / exitPrice
+              ? 1 - exitPrice / entryPrice
               : 0;
 
     function handleSubmit(e) {
@@ -38,70 +38,11 @@ function BLCalculator() {
                 USDS-M Futures
             </h1>
             <form action="" onSubmit={(e) => handleSubmit(e)}>
-                {/* Margin / Cost */}
-                <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
-                    <p className="text-sm font-medium">Margin cost</p>
-                    <input
-                        type="number"
-                        className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
-                        required
-                        onChange={(e) => setMargin(e.target.value)}
-                    />
-                </div>
+                {/*
+                 Postion
+                  */}
 
-                {/* Entry & Exit Price */}
-                <div className="">
-                    <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
-                        {/* Entry price */}
-                        <p className="text-sm font-medium">Entry Price</p>
-                        <input
-                            type="number"
-                            className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
-                            required
-                            onChange={(e) => setEntryPrice(e.target.value)}
-                        />
-                    </div>
-
-                    {/* Exit price */}
-                    <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
-                        <p className="text-sm font-medium">Exit Price</p>
-                        <input
-                            type="number"
-                            className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
-                            required
-                            onChange={(e) => setExitPrice(e.target.value)}
-                        />
-                    </div>
-                </div>
-
-                {/* Leverage */}
-                <div className="my-5 flex flex-col items-center justify-center py-2">
-                    <div className="my-1 flex justify-center gap-5">
-                        <p className="font-medium">Leverage:</p>
-                        <input
-                            type="range"
-                            min={1}
-                            max={50}
-                            onChange={(e) => setLeverage(e.target.value)}
-                        />{' '}
-                        <span
-                            className={
-                                leverage > 5 ? 'font-medium text-red-500' : ''
-                            }
-                        >
-                            {leverage}x
-                        </span>
-                    </div>
-                    {leverage > 5 && (
-                        <p className="text-xs text-red-500">
-                            We do not recommend using high leverage when trading
-                            cryptocurrencies
-                        </p>
-                    )}
-                </div>
-
-                {/* Postion */}
-                <div className="">
+                <div className="my-2">
                     <p className="mb-4 text-center text-sm font-medium">
                         Position
                     </p>
@@ -179,6 +120,72 @@ function BLCalculator() {
                             </p>
                         </div>
                     </div>
+                </div>
+
+                {/* Margin / Cost */}
+                <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
+                    <p className="text-sm font-medium">Margin cost</p>
+                    <input
+                        type="text"
+                        className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
+                        required
+                        onChange={(e) => setMargin(Number(e.target.value))}
+                    />
+                </div>
+
+                {/* Entry & Exit Price */}
+                <div className="">
+                    <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
+                        {/* Entry price */}
+                        <p className="text-sm font-medium">Entry Price</p>
+                        <input
+                            type="text"
+                            className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
+                            required
+                            onChange={(e) =>
+                                setEntryPrice(Number(e.target.value))
+                            }
+                        />
+                    </div>
+
+                    {/* Exit price */}
+                    <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
+                        <p className="text-sm font-medium">Exit Price</p>
+                        <input
+                            type="text"
+                            className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
+                            required
+                            onChange={(e) =>
+                                setExitPrice(Number(e.target.value))
+                            }
+                        />
+                    </div>
+                </div>
+
+                {/* Leverage */}
+                <div className="my-5 flex flex-col items-center justify-center py-2">
+                    <div className="my-1 flex justify-center gap-5">
+                        <p className="font-medium">Leverage:</p>
+                        <input
+                            type="range"
+                            min={1}
+                            max={50}
+                            onChange={(e) => setLeverage(e.target.value)}
+                        />{' '}
+                        <span
+                            className={
+                                leverage > 5 ? 'font-medium text-red-500' : ''
+                            }
+                        >
+                            {leverage}x
+                        </span>
+                    </div>
+                    {leverage > 5 && (
+                        <p className="text-center text-xs text-red-500">
+                            We do not recommend using high leverage when trading
+                            cryptocurrencies
+                        </p>
+                    )}
                 </div>
 
                 {/* Margin mode */}
@@ -270,7 +277,7 @@ function BLCalculator() {
                         name=""
                         className="rounded-lg bg-stone-400 px-2 py-1.5 font-poppins hover:cursor-pointer"
                         onChange={(e) =>
-                            setMaintenanceMarginRate(e.target.value)
+                            setMaintenanceMarginRate(Number(e.target.value))
                         }
                     >
                         <option value={0.4}>0.4 %</option>
@@ -290,7 +297,16 @@ function BLCalculator() {
                 </button>
             </form>
             <p className="mx-5 my-2 text-xl">Liquidation Price: </p>
-            <p className="mx-5 my-2 text-xl">Profit and Loss (PNL): {pl}</p>
+            <p className="mx-5 my-2 text-xl">
+                Profit and Loss (PNL):{' '}
+                <span
+                    className={
+                        pl > 0 ? 'text-green-500' : pl < 0 ? 'text-red-500' : ''
+                    }
+                >
+                    {new Intl.NumberFormat('en-US').format(pl.toFixed(3))}
+                </span>
+            </p>
         </div>
     );
 }
