@@ -1,18 +1,28 @@
+import { createContext, useState } from 'react';
 import BLCalculator from './BLCalculator';
 import BinanceReferal from './BinanceReferal';
 import NavBar from './NavBar';
+import { ThemeContext } from './context/Contexts';
 
 function App() {
-    /*
- Darkmode : #393E46
+    const [theme, setTheme] = useState('light');
 
-    */
     return (
-        <div style={{ backgroundColor: '#EEEEEE' }} className="">
-            <NavBar />
-            <BLCalculator />
-            <BinanceReferal />
-        </div>
+        <ThemeContext.Provider value={theme}>
+            {/* <AuthContext.Provider value={user}> */}
+            <div
+                className={
+                    theme === 'light'
+                        ? 'bg-[#EEEEEE] text-black'
+                        : 'bg-[#393E46] text-white '
+                }
+            >
+                <NavBar setTheme={setTheme} />
+                <BLCalculator />
+                <BinanceReferal />
+            </div>
+            {/* </AuthContext.Provider> */}
+        </ThemeContext.Provider>
     );
 }
 

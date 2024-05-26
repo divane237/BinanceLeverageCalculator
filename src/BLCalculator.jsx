@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ThemeContext } from './context/Contexts';
 
 function BLCalculator() {
     const [margin, setMargin] = useState(0);
@@ -9,8 +10,10 @@ function BLCalculator() {
     const [position, setPosition] = useState('');
     const [marginMode, setMarginMode] = useState('');
     const [maintenanceMarginRate, setMaintenanceMarginRate] = useState(0.004);
-    const [liqPrice, setLiqPrice] = useState();
+    const [liqPrice, setLiqPrice] = useState('');
     const [pl, setPL] = useState('');
+
+    const theme = useContext(ThemeContext);
 
     /*
     profit losses = margin * leverage * (exitPrice/entryPrice - 1)
@@ -38,8 +41,10 @@ function BLCalculator() {
                 position === 'long'
                     ? (margin * leverage - margin - walletBalance) /
                       (margin * leverage)
-                    : (margin * leverage + margin + walletBalance) /
-                      (margin * leverage);
+                    : position === 'short'
+                      ? (margin * leverage + margin + walletBalance) /
+                        (margin * leverage)
+                      : 0;
 
             value = variable * entryPrice + maintenanceMarginRate;
 
@@ -48,7 +53,7 @@ function BLCalculator() {
     }
 
     return (
-        <div>
+        <div className={theme === 'light' ? 'text-black' : 'text-white'}>
             <h1 className="text-center text-xl font-semibold">
                 USDS-M Futures
             </h1>
@@ -186,16 +191,17 @@ function BLCalculator() {
                             min={1}
                             max={50}
                             onChange={(e) => setLeverage(e.target.value)}
+                            value={leverage}
                         />{' '}
                         <span
                             className={
-                                leverage > 5 ? 'font-medium text-red-500' : ''
+                                leverage > 3 ? 'font-medium text-red-500' : ''
                             }
                         >
                             {leverage}x
                         </span>
                     </div>
-                    {leverage > 5 && (
+                    {leverage > 3 && (
                         <p className="text-center text-xs text-red-500">
                             We do not recommend using high leverage when trading
                             cryptocurrencies
@@ -230,7 +236,7 @@ function BLCalculator() {
                                     className={
                                         marginMode === 'cross'
                                             ? 'text-gray-500'
-                                            : 'text-black'
+                                            : ''
                                     }
                                 >
                                     Isolated
@@ -255,7 +261,7 @@ function BLCalculator() {
                                     className={
                                         marginMode === 'isolated'
                                             ? 'text-gray-500'
-                                            : 'text-black'
+                                            : ''
                                     }
                                 >
                                     Cross
@@ -314,16 +320,26 @@ function BLCalculator() {
                 </button>
             </form>
             <p className="mx-5 my-2 text-xl">
-                Liquidation Price: {liqPrice.toFixed(4)}
+                Liquidation Price:{' '}
+                <span className="font-semibold">
+                    {' '}
+                    {liqPrice === '' ? '-' : liqPrice.toFixed(4)}
+                </span>
             </p>
-            <p className="mx-5 my-2 text-xl">
+            <p className="mx-5 my-2 text-xl ">
                 Profit and Loss (PNL):{' '}
                 <span
                     className={
-                        pl > 0 ? 'text-green-500' : pl < 0 ? 'text-red-500' : ''
+                        pl === ''
+                            ? ''
+                            : pl >= 0
+                              ? 'font-medium text-green-500'
+                              : 'font-medium text-red-500'
                     }
                 >
-                    {pl === '' ? '-' : Intl.NumberFormat('en-US').format(pl)}
+                    {pl === ''
+                        ? '-'
+                        : Math.abs(Intl.NumberFormat('en-US').format(pl))}
                 </span>
             </p>
         </div>
