@@ -4,7 +4,7 @@ function BinanceReferal() {
             <div className="my-2 text-base">
                 Don't have a Binance account ? Create and verify your account
                 using the referal ID below
-                <p>
+                <p className="my-2">
                     Binance referal ID:{' '}
                     <span className="font-semibold">206524679</span>
                 </p>
@@ -12,7 +12,7 @@ function BinanceReferal() {
             <a
                 href="https://accounts.binance.com/register?ref=206524679"
                 target="blank"
-                className="p-1 font-semibold text-sky-600 hover:text-sky-300"
+                className="m-1 p-1 font-semibold text-sky-600 hover:text-sky-300"
             >
                 Click Here !!!
             </a>

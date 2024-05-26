@@ -9,7 +9,6 @@ function App() {
 
     return (
         <ThemeContext.Provider value={theme}>
-            {/* <AuthContext.Provider value={user}> */}
             <div
                 className={
                     theme === 'light'
@@ -21,7 +20,6 @@ function App() {
                 <BLCalculator />
                 <BinanceReferal />
             </div>
-            {/* </AuthContext.Provider> */}
         </ThemeContext.Provider>
     );
 }

@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { ThemeContext } from './context/Contexts';
+import InputSections from './InputSections';
 
 function BLCalculator() {
     const [margin, setMargin] = useState(0);
@@ -33,7 +34,7 @@ function BLCalculator() {
         e.preventDefault();
 
         setPL((value) => {
-            return (value = (determinant * margin * leverage)?.toFixed(2));
+            return (value = (determinant * margin * leverage).toFixed(2));
         });
 
         setLiqPrice((value) => {
@@ -58,9 +59,7 @@ function BLCalculator() {
                 USDS-M Futures
             </h1>
             <form action="" onSubmit={(e) => handleSubmit(e)}>
-                {/*
-                 Postion
-                  */}
+                {/*Postion */}
 
                 <div className="my-2">
                     <p className="mb-4 text-center text-sm font-medium">
@@ -79,8 +78,9 @@ function BLCalculator() {
                                 }
                                 value={position}
                                 name="longPosition"
-                                className="scale-200 mr-2 accent-[#079307] hover:cursor-pointer disabled:cursor-not-allowed"
+                                className="scale-200 mr-2 scale-150 accent-[#079307] hover:cursor-pointer disabled:cursor-not-allowed"
                                 disabled={position === 'short'}
+                                required
                             />{' '}
                             <span className="">
                                 <svg
@@ -109,6 +109,7 @@ function BLCalculator() {
                             </p>
                         </div>
 
+                        {/* SHORT */}
                         <div
                             className={`flex items-center gap-1 ${position === 'long' ? 'hover:cursor-not-allowed' : ''}`}
                         >
@@ -122,7 +123,7 @@ function BLCalculator() {
                                 }
                                 name="shortPosition"
                                 disabled={position === 'long'}
-                                className={`scale-200 mr-2 accent-[#ce1414] hover:cursor-pointer focus:accent-[#e43a3a] disabled:cursor-not-allowed`}
+                                className={`mr-2 scale-150 accent-[#ce1414] hover:cursor-pointer focus:accent-[#e43a3a] disabled:cursor-not-allowed`}
                             />{' '}
                             <span className="">
                                 <svg width="25" height="25" viewBox="0 0 15 15">
@@ -143,43 +144,27 @@ function BLCalculator() {
                 </div>
 
                 {/* Margin / Cost */}
-                <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
-                    <p className="text-sm font-medium">Margin cost</p>
-                    <input
-                        type="text"
-                        className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
-                        required
-                        onChange={(e) => setMargin(Number(e.target.value))}
-                    />
-                </div>
+
+                <InputSections
+                    title={'Margin cost'}
+                    setInputSection={setMargin}
+                />
 
                 {/* Entry & Exit Price */}
-                <div className="">
-                    <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
-                        {/* Entry price */}
-                        <p className="text-sm font-medium">Entry Price</p>
-                        <input
-                            type="text"
-                            className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
-                            required
-                            onChange={(e) =>
-                                setEntryPrice(Number(e.target.value))
-                            }
-                        />
-                    </div>
+                <div>
+                    {/* Entry price */}
+
+                    <InputSections
+                        title="Entry Price"
+                        setInputSection={setEntryPrice}
+                    />
 
                     {/* Exit price */}
-                    <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
-                        <p className="text-sm font-medium">Exit Price</p>
-                        <input
-                            type="text"
-                            className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
-                            required
-                            onChange={(e) =>
-                                setExitPrice(Number(e.target.value))
-                            }
-                        />
-                    </div>
+
+                    <InputSections
+                        title={'Exit Price'}
+                        setInputSection={setExitPrice}
+                    />
                 </div>
 
                 {/* Leverage */}
@@ -218,7 +203,7 @@ function BLCalculator() {
                     <div className="my-2 flex flex-col items-stretch justify-center gap-y-2">
                         <div className="flex justify-center gap-x-2 px-1 py-2">
                             <div
-                                className={`flex basis-1/4 gap-1 px-2 py-1 ${marginMode === 'cross' ? 'hover:cursor-not-allowed' : ''} `}
+                                className={`flex basis-1/4 gap-1 px-2 ${marginMode === 'cross' ? 'hover:cursor-not-allowed' : ''} `}
                             >
                                 <input
                                     type="checkbox"
@@ -230,8 +215,9 @@ function BLCalculator() {
                                             : setMarginMode('');
                                     }}
                                     disabled={marginMode === 'cross'}
-                                    className="scale-200 mr-2 hover:cursor-pointer disabled:cursor-not-allowed"
+                                    className="mr-2 scale-150 pt-6 hover:cursor-pointer disabled:cursor-not-allowed"
                                 />{' '}
+                                {/*  */}
                                 <p
                                     className={
                                         marginMode === 'cross'
@@ -242,8 +228,9 @@ function BLCalculator() {
                                     Isolated
                                 </p>
                             </div>
+                            {/*  */}
                             <div
-                                className={`flex basis-1/4 gap-1  px-2 py-1  ${marginMode === 'isolated' ? 'hover:cursor-not-allowed' : ''}`}
+                                className={`flex basis-1/4 gap-1 px-2 ${marginMode === 'isolated' ? 'hover:cursor-not-allowed' : ''}`}
                             >
                                 <input
                                     type="checkbox"
@@ -255,7 +242,7 @@ function BLCalculator() {
                                             : setMarginMode('');
                                     }}
                                     disabled={marginMode === 'isolated'}
-                                    className="scale-200 mr-2 hover:cursor-pointer disabled:cursor-not-allowed"
+                                    className="mr-2 scale-150 pt-6 hover:cursor-pointer disabled:cursor-not-allowed"
                                 />{' '}
                                 <p
                                     className={
@@ -271,22 +258,11 @@ function BLCalculator() {
 
                         {/* M Amount */}
 
-                        {marginMode === 'cross' ? (
-                            <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
-                                <p htmlFor="">Wallet Balance</p>
-                                <input
-                                    type="text"
-                                    className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
-                                    required
-                                    onChange={(e) => {
-                                        setWalletBalance(
-                                            Number(e.target.value),
-                                        );
-                                    }}
-                                />{' '}
-                            </div>
-                        ) : (
-                            <></>
+                        {marginMode === 'cross' && (
+                            <InputSections
+                                title={'Wallet Balance'}
+                                setInputSection={setWalletBalance}
+                            />
                         )}
                     </div>
                 </div>
@@ -319,15 +295,8 @@ function BLCalculator() {
                     Calculate
                 </button>
             </form>
-            <p className="mx-5 my-2 text-xl">
-                Liquidation Price:{' '}
-                <span className="font-semibold">
-                    {' '}
-                    {liqPrice === '' ? '-' : liqPrice.toFixed(4)}
-                </span>
-            </p>
             <p className="mx-5 my-2 text-xl ">
-                Profit and Loss (PNL):{' '}
+                Profit and Loss (PnL):{' '}
                 <span
                     className={
                         pl === ''
@@ -340,6 +309,13 @@ function BLCalculator() {
                     {pl === ''
                         ? '-'
                         : Math.abs(Intl.NumberFormat('en-US').format(pl))}
+                </span>
+            </p>
+            <p className="mx-5 my-2 text-xl">
+                Liquidation Price:{' '}
+                <span className="font-semibold">
+                    {' '}
+                    {liqPrice === '' ? '-' : liqPrice.toFixed(4)}
                 </span>
             </p>
         </div>
