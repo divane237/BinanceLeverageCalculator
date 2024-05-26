@@ -7,9 +7,6 @@ export default {
                 lato: ['Lato', 'sans-serif'],
                 poppins: ['Poppins', 'sans-serif'],
             },
-            scale: {
-                200: '2',
-            },
         },
     },
     plugins: [],

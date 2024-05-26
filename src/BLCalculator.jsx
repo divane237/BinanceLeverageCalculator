@@ -5,12 +5,12 @@ function BLCalculator() {
     const [entryPrice, setEntryPrice] = useState(0);
     const [exitPrice, setExitPrice] = useState(0);
     const [leverage, setLeverage] = useState(1);
-    const [maintenanceAmount, setMaintenanceAmount] = useState(0);
+    const [walletBalance, setWalletBalance] = useState(0);
     const [position, setPosition] = useState('');
     const [marginMode, setMarginMode] = useState('');
-    const [maintenanceMarginRate, setMaintenanceMarginRate] = useState();
+    const [maintenanceMarginRate, setMaintenanceMarginRate] = useState(0.004);
     const [liqPrice, setLiqPrice] = useState();
-    const [pl, setPL] = useState();
+    const [pl, setPL] = useState('');
 
     /*
     profit losses = margin * leverage * (exitPrice/entryPrice - 1)
@@ -29,7 +29,22 @@ function BLCalculator() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        setPL((value) => (value = determinant * margin * leverage));
+        setPL((value) => {
+            return (value = (determinant * margin * leverage)?.toFixed(2));
+        });
+
+        setLiqPrice((value) => {
+            const variable =
+                position === 'long'
+                    ? (margin * leverage - margin - walletBalance) /
+                      (margin * leverage)
+                    : (margin * leverage + margin + walletBalance) /
+                      (margin * leverage);
+
+            value = variable * entryPrice + maintenanceMarginRate;
+
+            return value;
+        });
     }
 
     return (
@@ -59,7 +74,7 @@ function BLCalculator() {
                                 }
                                 value={position}
                                 name="longPosition"
-                                className="mr-2 scale-200 accent-[#079307] hover:cursor-pointer disabled:cursor-not-allowed"
+                                className="scale-200 mr-2 accent-[#079307] hover:cursor-pointer disabled:cursor-not-allowed"
                                 disabled={position === 'short'}
                             />{' '}
                             <span className="">
@@ -102,7 +117,7 @@ function BLCalculator() {
                                 }
                                 name="shortPosition"
                                 disabled={position === 'long'}
-                                className={`mr-2 scale-200 accent-[#ce1414] hover:cursor-pointer focus:accent-[#e43a3a] disabled:cursor-not-allowed`}
+                                className={`scale-200 mr-2 accent-[#ce1414] hover:cursor-pointer focus:accent-[#e43a3a] disabled:cursor-not-allowed`}
                             />{' '}
                             <span className="">
                                 <svg width="25" height="25" viewBox="0 0 15 15">
@@ -209,7 +224,7 @@ function BLCalculator() {
                                             : setMarginMode('');
                                     }}
                                     disabled={marginMode === 'cross'}
-                                    className="mr-2 scale-200 hover:cursor-pointer disabled:cursor-not-allowed"
+                                    className="scale-200 mr-2 hover:cursor-pointer disabled:cursor-not-allowed"
                                 />{' '}
                                 <p
                                     className={
@@ -234,7 +249,7 @@ function BLCalculator() {
                                             : setMarginMode('');
                                     }}
                                     disabled={marginMode === 'isolated'}
-                                    className="mr-2 scale-200 hover:cursor-pointer disabled:cursor-not-allowed"
+                                    className="scale-200 mr-2 hover:cursor-pointer disabled:cursor-not-allowed"
                                 />{' '}
                                 <p
                                     className={
@@ -252,13 +267,15 @@ function BLCalculator() {
 
                         {marginMode === 'cross' ? (
                             <div className="flex flex-col items-center justify-center gap-y-3 py-2 md:flex-row md:gap-x-4">
-                                <p htmlFor="">Maintenance Amount</p>
+                                <p htmlFor="">Wallet Balance</p>
                                 <input
-                                    type="number"
+                                    type="text"
                                     className="rounded-full bg-stone-100 px-8 py-2 font-poppins"
                                     required
                                     onChange={(e) => {
-                                        setMaintenanceAmount(e.target.value);
+                                        setWalletBalance(
+                                            Number(e.target.value),
+                                        );
                                     }}
                                 />{' '}
                             </div>
@@ -280,14 +297,14 @@ function BLCalculator() {
                             setMaintenanceMarginRate(Number(e.target.value))
                         }
                     >
-                        <option value={0.4}>0.4 %</option>
-                        <option value={0.5}>0.5 %</option>
-                        <option value={1}>1.0 %</option>
-                        <option value={2}>2.0 %</option>
-                        <option value={2.5}>2.5 %</option>
-                        <option value={4}>4.0 %</option>
-                        <option value={5}>5.0 %</option>
-                        <option value={10}>10.0 %</option>
+                        <option value={0.004}>0.4 %</option>
+                        <option value={0.005}>0.5 %</option>
+                        <option value={0.01}>1.0 %</option>
+                        <option value={0.02}>2.0 %</option>
+                        <option value={0.025}>2.5 %</option>
+                        <option value={0.04}>4.0 %</option>
+                        <option value={0.05}>5.0 %</option>
+                        <option value={0.1}>10.0 %</option>
                     </select>
                 </div>
 
@@ -296,7 +313,9 @@ function BLCalculator() {
                     Calculate
                 </button>
             </form>
-            <p className="mx-5 my-2 text-xl">Liquidation Price: </p>
+            <p className="mx-5 my-2 text-xl">
+                Liquidation Price: {liqPrice.toFixed(4)}
+            </p>
             <p className="mx-5 my-2 text-xl">
                 Profit and Loss (PNL):{' '}
                 <span
@@ -304,7 +323,7 @@ function BLCalculator() {
                         pl > 0 ? 'text-green-500' : pl < 0 ? 'text-red-500' : ''
                     }
                 >
-                    {new Intl.NumberFormat('en-US').format(pl.toFixed(3))}
+                    {pl === '' ? '-' : Intl.NumberFormat('en-US').format(pl)}
                 </span>
             </p>
         </div>

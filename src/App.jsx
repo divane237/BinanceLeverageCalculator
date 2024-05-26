@@ -1,13 +1,19 @@
-import BLCalculator from "./BLCalculator";
-import NavBar from "./NavBar";
+import BLCalculator from './BLCalculator';
+import BinanceReferal from './BinanceReferal';
+import NavBar from './NavBar';
 
 function App() {
-  return (
-    <div>
-      <NavBar />
-      <BLCalculator />
-    </div>
-  );
+    /*
+ Darkmode : #393E46
+
+    */
+    return (
+        <div style={{ backgroundColor: '#EEEEEE' }} className="">
+            <NavBar />
+            <BLCalculator />
+            <BinanceReferal />
+        </div>
+    );
 }
 
 export default App;
