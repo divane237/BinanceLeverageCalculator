@@ -11,8 +11,8 @@ function BLCalculator() {
     const [position, setPosition] = useState('');
     const [marginMode, setMarginMode] = useState('');
     const [maintenanceMarginRate, setMaintenanceMarginRate] = useState(0.004);
-    const [liqPrice, setLiqPrice] = useState('');
-    const [pl, setPL] = useState('');
+    const [liqPrice, setLiqPrice] = useState(null);
+    const [pl, setPL] = useState(null);
 
     const theme = useContext(ThemeContext);
 
@@ -175,7 +175,9 @@ function BLCalculator() {
                             type="range"
                             min={1}
                             max={50}
-                            onChange={(e) => setLeverage(e.target.value)}
+                            onChange={(e) =>
+                                setLeverage(Number(e.target.value))
+                            }
                             value={leverage}
                         />{' '}
                         <span
@@ -299,14 +301,14 @@ function BLCalculator() {
                 Profit and Loss (PnL):{' '}
                 <span
                     className={
-                        pl === ''
+                        pl == null
                             ? ''
                             : pl >= 0
                               ? 'font-medium text-green-500'
                               : 'font-medium text-red-500'
                     }
                 >
-                    {pl === ''
+                    {pl === null
                         ? '-'
                         : Math.abs(Intl.NumberFormat('en-US').format(pl))}
                 </span>
@@ -315,7 +317,7 @@ function BLCalculator() {
                 Liquidation Price:{' '}
                 <span className="font-semibold">
                     {' '}
-                    {liqPrice === '' ? '-' : liqPrice.toFixed(4)}
+                    {liqPrice === null ? '-' : liqPrice?.toFixed(4)}
                 </span>
             </p>
         </div>
