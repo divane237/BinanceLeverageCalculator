@@ -16,6 +16,8 @@ function BLCalculator() {
 
     const theme = useContext(ThemeContext);
 
+    const formatedPL = new Intl.NumberFormat('en-US').format(Math.abs(pl));
+
     /*
     profit losses = margin * leverage * (exitPrice/entryPrice - 1)
 
@@ -34,7 +36,9 @@ function BLCalculator() {
         e.preventDefault();
 
         setPL((value) => {
-            return (value = (determinant * margin * leverage).toFixed(2));
+            return (value = Number(
+                (determinant * margin * leverage)?.toFixed(2),
+            ));
         });
 
         setLiqPrice((value) => {
@@ -56,7 +60,13 @@ function BLCalculator() {
     return (
         <div className={theme === 'light' ? 'text-black' : 'text-white'}>
             <h1 className="text-center text-xl font-semibold">
-                USDS-M Futures
+                USD
+                <span
+                    className={`mx-[0.1rem] rounded-[50%] border-2 px-1.5 text-lg font-medium ${theme === 'light' ? 'border-black' : 'border-white'}`}
+                >
+                    S
+                </span>
+                -M Futures
             </h1>
             <form action="" onSubmit={(e) => handleSubmit(e)}>
                 {/*Postion */}
@@ -297,27 +307,33 @@ function BLCalculator() {
                     Calculate
                 </button>
             </form>
+            {/*  */}
+            {/* Profit n Loss */}
             <p className="mx-5 my-2 text-xl ">
                 Profit and Loss (PnL):{' '}
                 <span
                     className={
-                        pl == null
+                        pl === null
                             ? ''
                             : pl >= 0
                               ? 'font-medium text-green-500'
                               : 'font-medium text-red-500'
                     }
                 >
-                    {pl === null
-                        ? '-'
-                        : Math.abs(Intl.NumberFormat('en-US').format(pl))}
+                    {pl === null ? '-' : formatedPL}
                 </span>
             </p>
+
+            {/* Liquidation price */}
             <p className="mx-5 my-2 text-xl">
                 Liquidation Price:{' '}
                 <span className="font-semibold">
                     {' '}
-                    {liqPrice === null ? '-' : liqPrice?.toFixed(4)}
+                    {liqPrice === null
+                        ? '-'
+                        : liqPrice <= 0
+                          ? 0
+                          : liqPrice?.toFixed(4)}
                 </span>
             </p>
         </div>

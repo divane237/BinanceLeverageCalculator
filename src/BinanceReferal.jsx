@@ -1,6 +1,6 @@
 function BinanceReferal() {
     return (
-        <div className="mt-10 p-5 text-center">
+        <div className="col-span-2 mt-10 p-5 text-center lg:col-start-1">
             <div className="my-2 text-base">
                 Don't have a Binance account ? Create and verify your account
                 using the referal ID below

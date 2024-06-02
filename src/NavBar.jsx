@@ -10,7 +10,7 @@ function NavBar({ setTheme }) {
     }
 
     return (
-        <div className="sticky top-0 z-50 mb-5 flex items-center justify-stretch gap-x-3 shadow-lg backdrop-blur-xl">
+        <div className="sticky top-0 z-50 mb-5 flex items-center justify-stretch gap-x-3 shadow-lg backdrop-blur-xl lg:col-span-2">
             <a className="flex items-center px-2 py-3 hover:cursor-pointer">
                 <span>
                     <svg
