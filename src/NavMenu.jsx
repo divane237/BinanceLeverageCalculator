@@ -1,3 +1,5 @@
+import LanguageSelection from './LanguageSelection';
+
 function NavMenu({ menu }) {
     const NAV_LINKS = [
         {
@@ -6,7 +8,7 @@ function NavMenu({ menu }) {
             comment: '',
         },
         {
-            title: 'Binance Fee Calculator',
+            title: 'Cryptocurrency and Blockchain',
             completed: false,
             comment: '',
         },
@@ -17,17 +19,17 @@ function NavMenu({ menu }) {
         },
     ];
 
-    // h-[92dvh]
+    const author = 'Divane';
     return (
         <div
             className={`${menu ? 'animate-menu relative' : 'hidden'} top-0 z-50 h-[95dvh] origin-top font-poppins backdrop-blur-2xl`}
         >
-            <ul className="border-b-2">
+            <ul className="border-b-2 border-gray-400">
                 {NAV_LINKS.map((link, n) => (
                     <li className="w-full" key={n}>
                         <a
                             href="/"
-                            className=" group top-0 block border-t-2 py-2 text-center font-semibold hover:text-lg hover:text-sky-400"
+                            className=" group top-0 block border-t-2 border-gray-400 py-2 text-center font-semibold hover:text-lg hover:text-sky-400"
                         >
                             {link.title}
                             <span className="hidden text-xs text-red-500 group-hover:block">
@@ -38,9 +40,11 @@ function NavMenu({ menu }) {
                 ))}
             </ul>
 
+            <LanguageSelection />
+
             <div className="absolute bottom-[16%] left-1/2 mx-2 mt-1 flex -translate-x-1/2 items-stretch justify-center gap-3 py-2">
                 <p className="whitespace-nowrap px-4 py-2">
-                    Copy right © {new Date().getFullYear()}
+                    Copy right © {author} {new Date().getFullYear()}
                 </p>
 
                 {/* Twitter X */}
