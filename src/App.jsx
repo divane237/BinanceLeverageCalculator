@@ -1,15 +1,24 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import BLCalculator from './BLCalculator';
 import BinanceReferal from './BinanceReferal';
 import NavBar from './NavBar';
 import { ThemeContext } from './context/Contexts';
 import FuturesTradingInstruction from './FuturesTradingInstruction';
+import NavMenu from './NavMenu';
+import FreeDonation from './FreeDonation';
 
 function App() {
     const [theme, setTheme] = useState('');
+    useEffect(() => {
+        document.body.style.backgroundColor =
+            theme === 'light' ? '#EEE' : '#393E46';
+    }, [theme]);
 
     return (
         <ThemeContext.Provider value={theme}>
+            <FreeDonation
+                className={`${theme === 'light' ? 'text-black' : 'text-white'}`}
+            />
             <div
                 className={`lg:grid lg:grid-cols-2
                     ${

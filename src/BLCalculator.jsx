@@ -58,11 +58,13 @@ function BLCalculator() {
     }
 
     return (
-        <div className={theme === 'light' ? 'text-black' : 'text-white'}>
-            <h1 className="text-center text-xl font-semibold">
+        <div
+            className={`mt-5 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+        >
+            <h1 className="select-none text-center text-xl font-semibold">
                 USD
                 <span
-                    className={`mx-[0.1rem] rounded-[50%] border-2 px-1.5 text-lg font-medium ${theme === 'light' ? 'border-black' : 'border-white'}`}
+                    className={`mx-[0.1rem] rounded-[50%] border-[1px] px-1.5 text-lg font-medium ${theme === 'light' ? 'border-black' : 'border-white'}`}
                 >
                     S
                 </span>
@@ -179,8 +181,10 @@ function BLCalculator() {
 
                 {/* Leverage */}
                 <div className="my-5 flex flex-col items-center justify-center py-2">
-                    <div className="my-1 flex justify-center gap-5">
-                        <p className="font-medium">Leverage:</p>
+                    <div className="my-1 flex items-center gap-[50px]">
+                        <p className="px-2 py-1 text-right font-medium">
+                            Leverage:
+                        </p>
                         <input
                             type="range"
                             min={1}
@@ -189,6 +193,7 @@ function BLCalculator() {
                                 setLeverage(Number(e.target.value))
                             }
                             value={leverage}
+                            className="scale-150"
                         />{' '}
                         <span
                             className={
