@@ -6,6 +6,7 @@ import { ThemeContext } from './context/Contexts';
 import FuturesTradingInstruction from './FuturesTradingInstruction';
 import NavMenu from './NavMenu';
 import FreeDonation from './FreeDonation';
+import Wallets from './Wallets';
 
 function App() {
     const [theme, setTheme] = useState('');
@@ -19,6 +20,7 @@ function App() {
             <FreeDonation
                 className={`${theme === 'light' ? 'text-black' : 'text-white'}`}
             />
+            {false && <Wallets />}
             <div
                 className={`lg:grid lg:grid-cols-2
                     ${
