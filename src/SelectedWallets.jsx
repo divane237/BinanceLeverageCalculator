@@ -19,17 +19,27 @@ function SelectedWallets({ selectedWallet }) {
     const theme = useContext(ThemeContext);
 
     return (
-        <div className="absolute top-0 z-[51] flex h-full w-full flex-col items-center justify-center bg-slate-400/20 backdrop-blur-lg">
-            <p className="font-poppins text-xl font-semibold">
+        <div className="absolute top-0 z-[51] flex h-full w-full flex-col items-center  justify-center bg-slate-400/20 backdrop-blur-lg">
+            <p className="my-3 select-none font-poppins text-xl font-semibold">
                 Name: {displayWallet.map((wallet) => wallet.name)}
             </p>
 
             {/* QR Code */}
-            <img
+            {/* <img
                 src={displayWallet[0].qrCode}
                 alt="bitcoin-code"
-                className="my-8 rounded-xl max-sm:w-1/2 lg:rounded-3xl"
-            />
+                className="my-8 select-none rounded-xl max-sm:w-1/2 lg:rounded-3xl"
+            /> */}
+            <div
+                style={{
+                    background: `url(${displayWallet[0].qrCode})`,
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundOrigin: 'padding-box',
+                    backgroundPosition: 'center',
+                }}
+                className="h-[300px] w-1/2 select-none"
+            ></div>
 
             {/* Wallet address  */}
             <div className="relative my-4 flex flex-col items-center text-sm lg:text-base">
@@ -38,7 +48,7 @@ function SelectedWallets({ selectedWallet }) {
                 >
                     {displayWallet[0].wallet}{' '}
                 </p>
-                <button className="my-2 lg:absolute lg:-right-2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-full">
+                <button className="my-2 hover:text-sky-300 lg:absolute lg:-right-2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-full">
                     <svg
                         width="30"
                         height="30"
@@ -55,7 +65,7 @@ function SelectedWallets({ selectedWallet }) {
                     </svg>
                 </button>
             </div>
-            <p className="font-semilbold text-sm italic tracking-wide text-sky-500">
+            <p className="font-semilbold select-none text-sm italic tracking-wide text-sky-500">
                 Please send the using the {displayWallet[0].network} network
             </p>
         </div>
