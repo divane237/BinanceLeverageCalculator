@@ -30,7 +30,7 @@ function FuturesTradingInstruction() {
     ];
 
     return (
-        <div className="lg:col-start-2 lg:row-start-2">
+        <div className="lg:col-start-2 lg:row-start-1">
             <h1 className="text-center text-xl font-bold">
                 How to use this Binance calculator
             </h1>

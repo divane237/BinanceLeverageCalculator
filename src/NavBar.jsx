@@ -17,7 +17,7 @@ function NavBar({ setTheme }) {
     }
 
     return (
-        <div className="sticky -top-1 z-50 lg:col-span-2">
+        <div className="sticky -top-1 z-50">
             <div className="relative flex items-center justify-stretch gap-x-3 shadow-lg backdrop-blur-xl">
                 <a className="flex items-center px-2 py-3 hover:cursor-pointer">
                     <span>

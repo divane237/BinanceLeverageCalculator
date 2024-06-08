@@ -22,7 +22,7 @@ function NavMenu({ menu }) {
     const author = 'Divane';
     return (
         <div
-            className={`${menu ? 'animate-menu relative' : 'hidden'} top-0 z-50 h-[95dvh] origin-top font-poppins backdrop-blur-2xl`}
+            className={`${menu ? 'relative animate-menu' : 'hidden'} top-0 z-50 h-[95dvh] origin-top font-poppins backdrop-blur-2xl`}
         >
             <ul className="border-b-2 border-gray-400">
                 {NAV_LINKS.map((link, n) => (
@@ -44,7 +44,7 @@ function NavMenu({ menu }) {
 
             <div className="absolute bottom-[16%] left-1/2 mx-2 mt-1 flex -translate-x-1/2 items-stretch justify-center gap-3 py-2">
                 <p className="whitespace-nowrap px-4 py-2">
-                    Copy right © {author} {new Date().getFullYear()}
+                    Copy right © {new Date().getFullYear()} {author}z
                 </p>
 
                 {/* Twitter X */}

@@ -1,14 +1,41 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ThemeContext, WalletContext } from './context/Contexts';
 
-function SelectedWallets({ selectedWallet }) {
+function SelectedWallets({ selectedWallet, setSelectedWallet }) {
+    const [copied, setCopied] = useState(null);
     useEffect(() => {
+        // The copy wallet address code
+
+        const copyClipboard = async () => {
+            // navigator.permissions
+            //     .query({ name: 'write-on-clipboard' })
+            //     .then((result) => {
+            //         if (result.state == 'granted' || result.state == 'prompt') {
+            //             alert('Write access granted!');
+            //         }
+            //     });
+
+            console.log('The copy clipboard function is executed');
+            try {
+                await navigator.clipboard.writeText(displayWallet[0].wallet);
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+        };
+
+        // Once copy icon is clicked, wallet is copied to the clipboard
+
+        console.log(copied);
+        (copied || !copied) && copyClipboard();
+
+        // Disable the scroll bar when menu is open
+
         document.body.style.overflow = 'hidden';
 
         return () => {
             document.body.style.overflow = 'unset';
         };
-    }, []);
+    }, [copied]);
 
     const wallets = useContext(WalletContext);
 
@@ -18,18 +45,42 @@ function SelectedWallets({ selectedWallet }) {
 
     const theme = useContext(ThemeContext);
 
+    function closeWallet() {
+        setSelectedWallet(!selectedWallet);
+    }
+
     return (
         <div className="absolute top-0 z-[51] flex h-full w-full flex-col items-center  justify-center bg-slate-400/20 backdrop-blur-lg">
-            <p className="my-3 select-none font-poppins text-xl font-semibold">
-                Name: {displayWallet.map((wallet) => wallet.name)}
-            </p>
+            <div className="select- relative my-3 w-full font-poppins text-xl font-semibold">
+                <p className="text-center">
+                    {displayWallet.map((wallet) => wallet.name)}
+                </p>
+
+                {/* Close icon */}
+                <button
+                    className="absolute right-[10%] top-0 translate-x-1/4 px-2 py-1 lg:right-[30%]"
+                    onClick={closeWallet}
+                >
+                    <svg width="30" height="30" viewBox="0 0 15 15" fill="none">
+                        <path
+                            d="M12.8536 2.85355C13.0488 2.65829 13.0488 2.34171 12.8536 2.14645C12.6583 1.95118 12.3417 1.95118 12.1464 2.14645L7.5 6.79289L2.85355 2.14645C2.65829 1.95118 2.34171 1.95118 2.14645 2.14645C1.95118 2.34171 1.95118 2.65829 2.14645 2.85355L6.79289 7.5L2.14645 12.1464C1.95118 12.3417 1.95118 12.6583 2.14645 12.8536C2.34171 13.0488 2.65829 13.0488 2.85355 12.8536L7.5 8.20711L12.1464 12.8536C12.3417 13.0488 12.6583 13.0488 12.8536 12.8536C13.0488 12.6583 13.0488 12.3417 12.8536 12.1464L8.20711 7.5L12.8536 2.85355Z"
+                            fill="red"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
 
             {/* QR Code */}
+
             {/* <img
                 src={displayWallet[0].qrCode}
                 alt="bitcoin-code"
                 className="my-8 select-none rounded-xl max-sm:w-1/2 lg:rounded-3xl"
             /> */}
+
+            {/* QR Code */}
             <div
                 style={{
                     background: `url(${displayWallet[0].qrCode})`,
@@ -48,7 +99,12 @@ function SelectedWallets({ selectedWallet }) {
                 >
                     {displayWallet[0].wallet}{' '}
                 </p>
-                <button className="my-2 hover:text-sky-300 lg:absolute lg:-right-2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-full">
+                <button
+                    className="my-2 hover:text-sky-300 lg:absolute lg:-right-2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-full"
+                    onClick={() => {
+                        setCopied(!copied);
+                    }}
+                >
                     <svg
                         width="30"
                         height="30"
@@ -63,10 +119,13 @@ function SelectedWallets({ selectedWallet }) {
                             clipRule="evenodd"
                         ></path>
                     </svg>
+                    <span className="text-center text-xs font-bold tracking-wider text-green-600">
+                        {copied && 'copied!'}
+                    </span>
                 </button>
             </div>
             <p className="font-semilbold select-none text-sm italic tracking-wide text-sky-500">
-                Please send the using the {displayWallet[0].network} network
+                Please send using the {displayWallet[0].network} network
             </p>
         </div>
     );

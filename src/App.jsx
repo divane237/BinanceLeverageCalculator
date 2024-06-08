@@ -90,6 +90,7 @@ const initialWallets = [
         wallet: '0x35cC3233946Cb544fc81a483A33479cff689225d',
         network: 'Ethereum',
         icon: <SHIB />,
+        qrCode: '/walletsImages/EthereumWallet.jpg',
     },
 ];
 
@@ -118,15 +119,19 @@ function App() {
                         setSelectedWallet={setSelectedWallet}
                     />
                     {selectedWallet && (
-                        <SelectedWallets selectedWallet={selectedWallet} />
+                        <SelectedWallets
+                            selectedWallet={selectedWallet}
+                            setSelectedWallet={setSelectedWallet}
+                        />
                     )}
-                    <div className={`lg:grid lg:grid-cols-2`}>
-                        <NavBar setTheme={setTheme} />
-
+                    <NavBar setTheme={setTheme} />
+                    <main
+                        className={`main overscroll-y-none lg:grid lg:grid-cols-2`}
+                    >
                         <BLCalculator />
                         <BinanceReferal />
                         <FuturesTradingInstruction />
-                    </div>
+                    </main>
                 </div>
             </WalletContext.Provider>
         </ThemeContext.Provider>
