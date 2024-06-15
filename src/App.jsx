@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 import BLCalculator from './BLCalculator';
 import BinanceReferal from './BinanceReferal';
 import NavBar from './NavBar';
-import { ThemeContext, WalletContext } from './context/Contexts';
+import { Language, ThemeContext, WalletContext } from './context/Contexts';
 import FuturesTradingInstruction from './FuturesTradingInstruction';
 
 import FreeDonation from './FreeDonation';
-import ETH from './ETH';
-import BNB from './BNB';
-import SOL from './SOL';
-import ADA from './ADA';
-import BTC from './BTC';
-import USDT from './USDT';
-import DOGE from './DOGE';
-import PEPE from './PEPE';
-import SHIB from './SHIB';
+import ETH from './Currency Logos/ETH';
+import BNB from './Currency Logos/BNB';
+import SOL from './Currency Logos/SOL';
+import ADA from './Currency Logos/ADA';
+import BTC from './Currency Logos/BTC';
+import USDT from './Currency Logos/USDT';
+import DOGE from './Currency Logos/DOGE';
+import PEPE from './Currency Logos/PEPE';
+import SHIB from './Currency Logos/SHIB';
 import SelectedWallets from './SelectedWallets';
 
 const initialWallets = [
@@ -56,20 +56,9 @@ const initialWallets = [
     {
         name: 'USDT',
         wallet: 'TCyzssJQUMa8LDnLYwfUFPufzM4V3ff8MF',
-
-        // wallet: [
-        //     '0x35cC3233946Cb544fc81a483A33479cff689225d',
-        //     'TCyzssJQUMa8LDnLYwfUFPufzM4V3ff8MF',
-        // ],
         network: 'Tron',
-        // network: ['Polygon', 'Tron'],
         icon: <USDT />,
         qrCode: '/walletsImages/USDT-Tron.jpg',
-
-        // qrCode: [
-        //     '/walletsImages/USDT-Polygon.jpg',
-        //     '/walletsImages/USDT-Tron.jpg',
-        // ],
     },
     {
         name: 'DOGE',
@@ -94,8 +83,18 @@ const initialWallets = [
     },
 ];
 
+const lngs = {
+    en: { nativeName: 'English' },
+    fr: { nativeName: 'French' },
+    de: { nativeName: 'German' },
+    ru: { nativeName: 'Russian' },
+    cn: { nativeName: 'Chinese' },
+    spa: { nativeName: 'Spanish' },
+    it: { nativeName: 'Italian' },
+};
+
 function App() {
-    const [theme, setTheme] = useState('');
+    const [theme, setTheme] = useState('light');
     const [wallets, setWallets] = useState(initialWallets);
     const [selectedWallet, setSelectedWallet] = useState(null);
 
@@ -107,32 +106,34 @@ function App() {
     return (
         <ThemeContext.Provider value={theme}>
             <WalletContext.Provider value={wallets}>
-                <div
-                    className={` ${
-                        theme === 'light'
-                            ? 'bg-[#EEE] text-black'
-                            : 'bg-[#393E46] text-white '
-                    }`}
-                >
-                    <FreeDonation
-                        // className={`${theme === 'light' ? 'text-black' : 'text-white'}`}
-                        setSelectedWallet={setSelectedWallet}
-                    />
-                    {selectedWallet && (
-                        <SelectedWallets
-                            selectedWallet={selectedWallet}
+                <Language.Provider value={lngs}>
+                    <div
+                        className={` ${
+                            theme === 'light'
+                                ? 'bg-[#EEE] text-black'
+                                : 'bg-[#393E46] text-white'
+                        }`}
+                    >
+                        <FreeDonation
+                            // className={`${theme === 'light' ? 'text-black' : 'text-white'}`}
                             setSelectedWallet={setSelectedWallet}
                         />
-                    )}
-                    <NavBar setTheme={setTheme} />
-                    <main
-                        className={`main overscroll-y-none lg:grid lg:grid-cols-2`}
-                    >
-                        <BLCalculator />
-                        <BinanceReferal />
-                        <FuturesTradingInstruction />
-                    </main>
-                </div>
+                        {selectedWallet && (
+                            <SelectedWallets
+                                selectedWallet={selectedWallet}
+                                setSelectedWallet={setSelectedWallet}
+                            />
+                        )}
+                        <NavBar setTheme={setTheme} />
+                        <main
+                            className={`main overscroll-y-none lg:grid lg:grid-cols-2`}
+                        >
+                            <BLCalculator />
+                            <BinanceReferal />
+                            <FuturesTradingInstruction />
+                        </main>
+                    </div>
+                </Language.Provider>
             </WalletContext.Provider>
         </ThemeContext.Provider>
     );

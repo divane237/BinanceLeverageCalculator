@@ -151,7 +151,9 @@ function NavBar({ setTheme }) {
                     </button>
                 )}
             </div>
-            <NavMenu menu={menu} />
+
+            {/* Menu */}
+            <NavMenu menu={menu} setMenu={setMenu} />
         </div>
     );
 }

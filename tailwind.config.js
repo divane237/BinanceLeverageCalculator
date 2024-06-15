@@ -9,7 +9,7 @@ export default {
             },
 
             animation: {
-                menu: 'menu 0.6s ease-in-out forwards',
+                menu: 'menu 0.8s ease-in-out forwards',
             },
 
             keyframes: {
