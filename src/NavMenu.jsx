@@ -44,7 +44,7 @@ function NavMenu({ menu }) {
 
             <div className="absolute bottom-[16%] left-1/2 mx-2 mt-1 flex -translate-x-1/2 items-stretch justify-center gap-3 py-2">
                 <p className="whitespace-nowrap px-4 py-2">
-                    Copy right © {new Date().getFullYear()} {author}z
+                    Copy right © {new Date().getFullYear()} {author}
                 </p>
 
                 {/* Twitter X */}
