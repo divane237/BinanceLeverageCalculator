@@ -1,25 +1,30 @@
+import { useTranslation } from 'react-i18next';
 import LanguageSelection from './LanguageSelection';
 
 function NavMenu({ menu, setMenu }) {
+    const { t } = useTranslation();
+
     const NAV_LINKS = [
         {
-            title: 'Binance Futures Calculator',
+            // title: 'Binance Futures Calculator',
+            title: t('navMenuComponent.link1'),
             completed: true,
             comment: '',
         },
         {
-            title: 'Cryptocurrency and Blockchain',
+            title: t('navMenuComponent.link2'),
             completed: false,
             comment: '',
         },
         {
-            title: 'InvesTrack',
+            title: t('navMenuComponent.link3'),
             completed: false,
-            comment: '(Not avaivalable currently)',
+            comment: t('navMenuComponent.comment'),
         },
     ];
 
     const author = 'Divane';
+
     return (
         <div
             className={`${menu ? 'relative animate-menu' : 'hidden'} top-0 z-50 h-[100dvh] origin-top font-poppins backdrop-blur-2xl`}
@@ -28,7 +33,7 @@ function NavMenu({ menu, setMenu }) {
                 {NAV_LINKS.map((link, n) => (
                     <li className="w-full" key={n}>
                         <a
-                            href="/"
+                            href=""
                             className="group top-0 block border-t-2 border-gray-400 py-2 text-center font-semibold hover:text-lg hover:text-sky-400"
                         >
                             {link.title}

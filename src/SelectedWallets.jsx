@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import { ThemeContext, WalletContext } from './context/Contexts';
+import { useTranslation } from 'react-i18next';
 
 function SelectedWallets({ selectedWallet, setSelectedWallet }) {
     const [copied, setCopied] = useState(false);
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         // The copy wallet address code
@@ -128,13 +131,17 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
                     </svg>
                     {copied && (
                         <span className="text-center text-xs font-bold tracking-wider text-green-600">
-                            copied!
+                            {/* copied! */}
+                            {t('selectedWalletComponent.part1')}
                         </span>
                     )}
                 </button>
             </div>
             <p className="font-semilbold select-none text-sm italic tracking-wide text-sky-500">
-                Please send using the {displayWallet[0].network} network
+                {/* Please send using the {displayWallet[0].network} network */}
+                {/* Please send using the {displayWallet[0].network} network */}
+                {t(`selectedWalletComponent.part2`)} {displayWallet[0].network}{' '}
+                {t(`selectedWalletComponent.part3`)}
             </p>
         </div>
     );

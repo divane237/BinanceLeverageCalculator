@@ -9,7 +9,7 @@ function LanguageSelection({ setMenu }) {
     const lngs = useContext(Language);
     return (
         <div className="mt-3 flex justify-center font-lato">
-            <p className="px-2 py-1.5">Language</p>
+            <p className="px-2 py-1.5">{t('language')}</p>
 
             <select
                 name="languages"

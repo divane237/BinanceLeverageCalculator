@@ -1,55 +1,60 @@
 // https://www.binance.com/en/support/announcement/binance-futures-will-update-the-leverage-margin-tiers-and-capped-funding-rate-of-multiple-usd%E2%93%A2-m-perpetual-contracts-2023-11-06-9c88b57603534ad68444e209ea9d9c28
 
+import { useTranslation } from 'react-i18next';
+
 function FuturesTradingInstruction() {
+    const { t } = useTranslation();
+
     const INSTRUCTIONS = [
         {
-            description:
-                'If you are betting for prices to rise, choose "Long", and if you are betting against the market choose "Short"',
+            description: t('futuresTradingInstruction.instruction1'),
         },
         {
-            description:
-                'Enter the cost or margin. Imagine you have 10,000 USDT in your USDS-M Futures wallet and you wish to use only part, let say 6,000. This is the amount you will input on the "cost/margin" fill',
+            description: t('futuresTradingInstruction.instruction2'),
         },
         {
-            description: 'Set your entry price',
+            description: t('futuresTradingInstruction.instruction3'),
         },
         {
-            description: 'Set your exit price',
+            description: t('futuresTradingInstruction.instruction4'),
         },
         {
-            description:
-                'Select your leverage between 1 and 50. Remember cryptocurrency market is very volatile',
+            description: t('futuresTradingInstruction.instruction5'),
         },
         {
-            description: `Select your margin mode "Isolated" or "Cross". Selecting "Cross" means your available balance will be used to keep your position open. Meaning of the 6,000 you used, you can now input an amount in the "Wallet Balance" field provided to adjust your liquidation price. The remaining 4,000 could be lost totally if the is no STOP-LOSS mechanism placed. On the other hand, selecting "Isolated", means only your 6,000 will be lost in the event of a liquidation`,
+            description: t('futuresTradingInstruction.instruction6'),
         },
         {
-            description: `Select a maintenance margin rate, which vary depending on the pair you trade and your position size. You can check this out using this `,
+            description: t('futuresTradingInstruction.instruction7'),
             link: 'https://www.binance.com/en/support/announcement/binance-futures-will-update-the-leverage-margin-tiers-and-capped-funding-rate-of-multiple-usd%E2%93%A2-m-perpetual-contracts-2023-11-06-9c88b57603534ad68444e209ea9d9c28',
         },
         {
-            description:
-                'Click Calculate to know your liquidation price & your',
+            description: t('futuresTradingInstruction.instruction8'),
         },
     ];
 
     return (
         <div className="lg:col-start-2 lg:row-start-1 lg:my-4">
             <h1 className="text-center text-xl font-bold">
-                How to use this Binance calculator
+                {/* How to use this Binance calculator */}
+                {t('futuresTradingInstruction.title')}
             </h1>
             <ul className="mt-3 px-2 py-2">
                 {INSTRUCTIONS.map((instruction, n) => (
                     <li className="my-3" key={n}>
-                        <span className="font-semibold">Step {n + 1}:</span>{' '}
+                        <span className="font-semibold">
+                            {' '}
+                            {t('futuresTradingInstruction.step')} {n + 1}:
+                        </span>{' '}
                         {instruction.description}{' '}
                         {instruction.link && (
                             <a
                                 href={instruction.link}
-                                className="text-blue-500 hover:text-blue-300"
+                                className="ml-1 text-blue-500 hover:text-blue-300"
                                 target="blank"
                             >
-                                link.
+                                {/* link. */}
+                                {t('futuresTradingInstruction.externalLink')}.
                             </a>
                         )}
                     </li>
@@ -60,14 +65,3 @@ function FuturesTradingInstruction() {
 }
 
 export default FuturesTradingInstruction;
-
-function externalBinanceLink() {
-    return (
-        <a
-            href=" https://www.binance.com/en/support/announcement/binance-futures-will-update-the-leverage-margin-tiers-and-capped-funding-rate-of-multiple-usd%E2%93%A2-m-perpetual-contracts-2023-11-06-9c88b57603534ad68444e209ea9d9c28"
-            target="blank"
-        >
-            here
-        </a>
-    );
-}

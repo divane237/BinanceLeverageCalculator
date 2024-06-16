@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { ThemeContext } from './context/Contexts';
 import InputSections from './InputSections';
+import { useTranslation } from 'react-i18next';
 
 function BLCalculator() {
     const [margin, setMargin] = useState(0);
@@ -13,6 +14,7 @@ function BLCalculator() {
     const [maintenanceMarginRate, setMaintenanceMarginRate] = useState(0.004);
     const [liqPrice, setLiqPrice] = useState(null);
     const [pl, setPL] = useState(null);
+    const { t } = useTranslation();
 
     const theme = useContext(ThemeContext);
 
@@ -73,9 +75,9 @@ function BLCalculator() {
             <form action="" onSubmit={(e) => handleSubmit(e)}>
                 {/*Postion */}
 
-                <div className="my-2">
-                    <p className="mb-4 text-center text-sm font-medium">
-                        Position
+                <div className="my-4">
+                    <p className="mb-2 text-center text-base font-medium">
+                        {t('blCalculatorComponent.position')}
                     </p>
                     <div className="flex items-center justify-center gap-x-16">
                         <div
@@ -117,7 +119,7 @@ function BLCalculator() {
                                 htmlFor="longPosition"
                                 className={`font-semibold ${position === 'long' ? 'text-[#079307]' : position === '' ? 'text-[#308c28df]' : 'text-[#a8eca8]'}`}
                             >
-                                Long
+                                {t('blCalculatorComponent.long')}
                             </p>
                         </div>
 
@@ -149,7 +151,7 @@ function BLCalculator() {
                                 htmlFor="shortPosition"
                                 className={`font-semibold  ${position === 'short' ? 'text-[#ce1414]' : position === '' ? 'text-[#e73737]' : 'text-red-300'}`}
                             >
-                                Short
+                                {t('blCalculatorComponent.short')}
                             </p>
                         </div>
                     </div>
@@ -158,7 +160,7 @@ function BLCalculator() {
                 {/* Margin / Cost */}
 
                 <InputSections
-                    title={'Margin cost'}
+                    title={t('blCalculatorComponent.cost')}
                     setInputSection={setMargin}
                 />
 
@@ -167,14 +169,14 @@ function BLCalculator() {
                     {/* Entry price */}
 
                     <InputSections
-                        title="Entry Price"
+                        title={t('blCalculatorComponent.entry')}
                         setInputSection={setEntryPrice}
                     />
 
                     {/* Exit price */}
 
                     <InputSections
-                        title={'Exit Price'}
+                        title={t('blCalculatorComponent.exit')}
                         setInputSection={setExitPrice}
                     />
                 </div>
@@ -183,7 +185,7 @@ function BLCalculator() {
                 <div className="my-5 flex flex-col items-center justify-center py-2">
                     <div className="my-1 flex items-center gap-[50px]">
                         <p className="px-2 py-1 text-right font-medium">
-                            Leverage:
+                            {t('blCalculatorComponent.leverage')}:
                         </p>
                         <input
                             type="range"
@@ -205,8 +207,7 @@ function BLCalculator() {
                     </div>
                     {leverage > 3 && (
                         <p className="text-center text-xs text-red-500">
-                            We do not recommend using high leverage when trading
-                            cryptocurrencies
+                            {t('blCalculatorComponent.leverageComment')}
                         </p>
                     )}
                 </div>
@@ -214,7 +215,7 @@ function BLCalculator() {
                 {/* Margin mode */}
                 <div className="my-4 flex-col">
                     <p className="px-1 py-2 text-center text-sm font-medium ">
-                        Margin mode
+                        {t('blCalculatorComponent.marginMode')}
                     </p>
 
                     <div className="my-2 flex flex-col items-stretch justify-center gap-y-2">
@@ -242,7 +243,7 @@ function BLCalculator() {
                                             : ''
                                     }
                                 >
-                                    Isolated
+                                    {t('blCalculatorComponent.isolated')}
                                 </p>
                             </div>
                             {/*  */}
@@ -268,7 +269,7 @@ function BLCalculator() {
                                             : ''
                                     }
                                 >
-                                    Cross
+                                    {t('blCalculatorComponent.cross')}
                                 </p>
                             </div>
                         </div>
@@ -287,7 +288,7 @@ function BLCalculator() {
                 {/* Maintenance Margin Rate */}
                 <div className="flex flex-col items-center justify-center gap-y-2 px-1 py-2 sm:flex-row sm:gap-x-4">
                     <p className="text-center text-sm font-medium">
-                        Maintenance Margin Rate
+                        {t('blCalculatorComponent.mmr')}
                     </p>
                     <select
                         name=""
@@ -309,13 +310,14 @@ function BLCalculator() {
 
                 {/* Submit button */}
                 <button className="mx-5 my-3 rounded-full bg-sky-600 p-3 font-lato">
-                    Calculate
+                    {t('blCalculatorComponent.calculate')}
                 </button>
             </form>
             {/*  */}
+
             {/* Profit n Loss */}
             <p className="mx-5 my-2 text-xl ">
-                Profit and Loss (PnL):{' '}
+                {t('blCalculatorComponent.profitNLoss')}:{' '}
                 <span
                     className={
                         pl === null
@@ -331,7 +333,7 @@ function BLCalculator() {
 
             {/* Liquidation price */}
             <p className="mx-5 my-2 text-xl">
-                Liquidation Price:{' '}
+                {t('blCalculatorComponent.liquidation')}:{' '}
                 <span className="font-semibold">
                     {' '}
                     {liqPrice === null

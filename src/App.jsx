@@ -85,12 +85,12 @@ const initialWallets = [
 
 const lngs = {
     en: { nativeName: 'English' },
-    fr: { nativeName: 'French' },
-    de: { nativeName: 'German' },
-    ru: { nativeName: 'Russian' },
-    cn: { nativeName: 'Chinese' },
-    spa: { nativeName: 'Spanish' },
-    it: { nativeName: 'Italian' },
+    fr: { nativeName: 'Français' },
+    de: { nativeName: 'Deutsch' },
+    ru: { nativeName: 'Русский' },
+    cn: { nativeName: '中文' },
+    spa: { nativeName: 'Español' },
+    it: { nativeName: 'Italiano' },
 };
 
 function App() {
