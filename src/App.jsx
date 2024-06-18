@@ -16,6 +16,7 @@ import DOGE from './Currency Logos/DOGE';
 import PEPE from './Currency Logos/PEPE';
 import SHIB from './Currency Logos/SHIB';
 import SelectedWallets from './SelectedWallets';
+import TestingTransitions from './TestingTransitions';
 
 const initialWallets = [
     {
@@ -114,10 +115,7 @@ function App() {
                                 : 'bg-[#393E46] text-white'
                         }`}
                     >
-                        <FreeDonation
-                            // className={`${theme === 'light' ? 'text-black' : 'text-white'}`}
-                            setSelectedWallet={setSelectedWallet}
-                        />
+                        <FreeDonation setSelectedWallet={setSelectedWallet} />
                         {selectedWallet && (
                             <SelectedWallets
                                 selectedWallet={selectedWallet}
@@ -125,6 +123,7 @@ function App() {
                             />
                         )}
                         <NavBar setTheme={setTheme} />
+
                         <main
                             className={`main overscroll-y-none lg:grid lg:grid-cols-2`}
                         >

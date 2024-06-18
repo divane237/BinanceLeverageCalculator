@@ -11,31 +11,32 @@ i18n.use(LanguageDetector)
             escapeValue: false, // not needed for react as it escapes by default
         },
         resources: {
+            // English Section
             en: {
                 translation: {
                     // here we will place our translations...
                     language: 'Language',
                     binanceReferalComponent: {
                         part1: "Don't have a Binance account ? Create and verify your account using the referal ID below",
-                        part2: 'Binance referal ID',
+                        part2: 'Binance referal ID: ',
                         part3: 'Click Here !!!',
                     },
                     freeDonationComponent: {
-                        part1: 'Want to offer $10 for coffee ?',
+                        part1: 'Wish to offer $10 for coffee ?',
                     },
                     futuresTradingInstruction: {
                         externalLink: 'link',
                         title: 'How to use this Binance calculator',
                         step: 'Step',
                         instruction1:
-                            'If you are betting for prices to rise, choose "Long", and if you are betting against the market choose "Short"',
+                            'If you are betting for prices to rise, choose ‘‘Long’’, and if you are betting against the market choose ‘‘Short’’',
                         instruction2:
-                            'Enter the cost or margin. Imagine you have 10,000 USDT in your USDS-M Futures wallet and you wish to use only part, let say 6,000. This is the amount you will input on the "cost/margin" fill',
+                            'Enter the cost or margin. Imagine you have 10,000 USDT in your USDS-M Futures wallet and you wish to use only part, let say 6,000. This is the amount you will input on the ‘‘Cost/Margin’’ fill',
                         instruction3: 'Set your entry price',
                         instruction4: 'Set your exit price',
                         instruction5:
                             'Select your leverage between 1 and 50. Remember cryptocurrency market is very volatile',
-                        instruction6: `Select your margin mode "Isolated" or "Cross". Selecting "Cross" means your available balance will be used to keep your position open. Meaning of the 6,000 you used, you can now input an amount in the "Wallet Balance" field provided to adjust your liquidation price. The remaining 4,000 could be lost totally if the is no STOP-LOSS mechanism placed. On the other hand, selecting "Isolated", means only your 6,000 will be lost in the event of a liquidation`,
+                        instruction6: `Select your margin mode ‘‘Isolated’’ or ‘‘Cross’’. Selecting ‘‘Cross’’ means your available balance will be used to keep your position open. Meaning of the 6,000 you used, you can now input an amount in the "Wallet Balance" field provided to adjust your liquidation price. The remaining 4,000 could be lost totally if the is no STOP-LOSS mechanism placed. On the other hand, selecting ‘‘Isolated’’, means only your 6,000 will be lost in the event of a liquidation`,
                         instruction7: `Select a maintenance margin rate, which vary depending on the pair you trade and your position size. You can check this out using this `,
                         instruction8:
                             'Click Calculate to know your liquidation price & your profit or losses',
@@ -72,32 +73,35 @@ i18n.use(LanguageDetector)
                     },
                 },
             },
+
+            // French Section
+
             fr: {
                 translation: {
                     // here we will place our translations...
                     language: 'Langue',
                     binanceReferalComponent: {
                         part1: "Vous n'avez pas de compte Binance ? Créez et vérifiez votre compte en utilisant le code de parrainage ci-dessous",
-                        part2: 'Code de parrainage Binance',
+                        part2: 'Code de parrainage Binance: ',
                         part3: 'Cliquez ici !!!',
                     },
                     freeDonationComponent: {
-                        part1: 'Vous voulez offrir 10 $ pour un café ?',
+                        part1: 'Vous souhaitez offrir 10 $ pour un café ?',
                     },
                     futuresTradingInstruction: {
                         externalLink: 'lien',
                         title: 'Comment utiliser cette calculatrice Binance',
                         step: 'Étape',
                         instruction1:
-                            "Si vous pariez sur une hausse des prix, choisissez 'Long', et si vous pariez contre le marché, choisissez 'Short'.",
+                            'Si vous pariez sur une hausse des prix, choisissez « Acheter », et si vous pariez contre le marché, choisissez « Vendre ».',
                         instruction2:
-                            "Entrez le coût ou la marge. Imaginez que vous avez 10 000 USDT dans votre portefeuille Futures USDS-M et que vous souhaitez n'en utiliser qu'une partie, disons 6 000. C'est le montant que vous allez entrer dans le champ 'coût/marge'.",
+                            "Entrez le coût ou la marge. Imaginez que vous avez 10 000 USDT dans votre portefeuille Futures USDS-M et que vous souhaitez n'en utiliser qu'une partie, disons 6 000. C'est le montant que vous allez entrer dans le champ « Coût/Marge ».",
                         instruction3: "Définissez votre prix d'entrée.",
                         instruction4: 'Définissez votre prix de sortie.',
                         instruction5:
                             "Sélectionnez votre levier entre 1 et 50. N'oubliez pas que le marché des cryptomonnaies est très volatil.",
                         instruction6:
-                            "Sélectionnez votre mode de marge 'Isolée' ou 'Croisée'. Sélectionner 'Croisé' signifie que votre solde disponible sera utilisé pour maintenir votre position ouverte. Cela signifie que sur les 6 000 que vous avez utilisés, vous pouvez maintenant entrer un montant dans le champ 'Solde du portefeuille' fourni pour ajuster votre prix de liquidation. Les 4 000 restants pourraient être totalement perdus s'il n'y a pas de mécanisme STOP-LOSS en place. En revanche, sélectionner 'Isolée' signifie que seuls vos 6 000 seront perdus en cas de liquidation.",
+                            "Sélectionnez votre mode de marge « Isolée » ou « Croisée ». Sélectionner « Croisé » signifie que votre solde disponible sera utilisé pour maintenir votre position ouverte. Cela signifie que sur les 6 000 que vous avez utilisés, vous pouvez maintenant entrer un montant dans le champ 'Solde du portefeuille' fourni pour ajuster votre prix de liquidation. Les 4 000 restants pourraient être totalement perdus s'il n'y a pas de mécanisme STOP-LOSS en place. En revanche, sélectionner « Isolée » signifie que seuls vos 6 000 seront perdus en cas de liquidation.",
                         instruction7:
                             'Sélectionnez un taux de marge de maintenance, qui varie en fonction de la paire que vous tradez et de la taille de votre position. Vous pouvez vérifier cela en utilisant ce',
                         instruction8:
@@ -137,34 +141,35 @@ i18n.use(LanguageDetector)
                 },
             },
 
+            // German Section
+
             de: {
                 translation: {
                     // here we will place our translations...
                     language: 'Sprache',
                     binanceReferalComponent: {
                         part1: 'Sie haben kein Binance-Konto? Erstellen und verifizieren Sie Ihr Konto mit dem unten stehenden Empfehlungscode',
-                        part2: 'Binance Empfehlungscode',
+                        part2: 'Binance Empfehlungscode: ',
                         part3: 'Hier klicken !!!',
                     },
                     freeDonationComponent: {
-                        part1: 'Möchtest du $10 für einen Kaffee ausgeben?',
+                        part1: 'Möchten Sie 10 USD für einen Kaffee verschenken?',
                     },
                     futuresTradingInstruction: {
                         externalLink: 'Link',
                         title: 'Wie man diesen Binance-Rechner verwendet',
                         step: 'Schritt',
-                        instruction1:
-                            "Wenn Sie auf steigende Preise setzen, wählen Sie 'Long'. Wenn Sie gegen den Markt setzen, wählen Sie 'Short'.",
+                        instruction1: `Wenn Sie auf steigende Preise setzen, wählen Sie ,,Long’’. Wenn Sie gegen den Markt setzen, wählen Sie ,,Short’’.`,
                         instruction2:
-                            "Geben Sie die Kosten oder die Marge ein. Stellen Sie sich vor, Sie haben 10.000 USDT in Ihrem USDS-M Futures-Wallet und möchten nur einen Teil davon verwenden, sagen wir 6.000. Diesen Betrag geben Sie im Feld 'Kosten/Marge' ein.",
+                            'Geben Sie die Kosteßn oder die Marge ein. Stellen Sie sich vor, Sie haben 10.000 USDT in Ihrem USDS-M Futures-Wallet und möchten nur einen Teil davon verwenden, sagen wir 6.000. Diesen Betrag geben Sie im Feld ,,Kosten’’ ein.',
                         instruction3: 'Legen Sie Ihren Einstiegspreis fest.',
                         instruction4: 'Legen Sie Ihren Ausstiegspreis fest.',
                         instruction5:
                             'Wählen Sie einen Hebel zwischen 1 und 50. Denken Sie daran, dass der Kryptowährungsmarkt sehr volatil ist.',
                         instruction6:
-                            "Wählen Sie Ihren Margin-Modus: 'Isoliert' oder 'Kreuz'. Wenn Sie 'Kreuz' wählen, wird Ihr verfügbares Guthaben verwendet, um Ihre Position offen zu halten. Von den 6.000, die Sie eingesetzt haben, können Sie jetzt einen Betrag im Feld 'Wallet-Guthaben' eingeben, um Ihren Liquidationspreis anzupassen. Die restlichen 4.000 könnten komplett verloren gehen, wenn kein STOP-LOSS-Mechanismus vorhanden ist. Wenn Sie jedoch 'Isoliert' wählen, gehen im Falle einer Liquidation nur Ihre 6.000 verloren.",
+                            "Wählen Sie Ihren Margin-Modus: ,,Isolated’’ oder ,,Kreuz’’. Wenn Sie 'Kreuz' wählen, wird Ihr verfügbares Guthaben verwendet, um Ihre Position offen zu halten. Von den 6.000, die Sie eingesetzt haben, können Sie jetzt einen Betrag im Feld 'Wallet-Guthaben' eingeben, um Ihren Liquidationspreis anzupassen. Die restlichen 4.000 könnten komplett verloren gehen, wenn kein STOP-LOSS-Mechanismus vorhanden ist. Wenn Sie jedoch ,,Isoliert’’ wählen, gehen im Falle einer Liquidation nur Ihre 6.000 verloren.",
                         instruction7:
-                            'Wählen Sie eine Wartungsmarge, die je nach gehandeltem Paar und Positionsgröße variiert. Sie können dies mit diesem Tool überprüfen ',
+                            'Wählen Sie eine Wartungsmarge, die je nach gehandeltem Paar und Positionsgröße variiert. Sie können dies mit diesem Tool überprüfen',
                         instruction8:
                             'Klicken Sie auf Berechnen, um Ihren Liquidationspreis und Ihre Gewinne oder Verluste zu erfahren.',
                     },
@@ -201,17 +206,19 @@ i18n.use(LanguageDetector)
                 },
             },
 
+            // Russian Section
+
             ru: {
                 translation: {
                     // here we will place our translations...
                     language: 'Язык',
                     binanceReferalComponent: {
                         part1: 'У вас нет аккаунта на Binance? Создайте и подтвердите свой аккаунт, используя указанный ниже реферальный код',
-                        part2: 'Реферальный код Binance',
+                        part2: 'Реферальный код Binance: ',
                         part3: 'Нажмите здесь',
                     },
                     freeDonationComponent: {
-                        part1: 'Хотите предложить $10 за кофе?',
+                        part1: 'Хотите подарить $10 на кофе?',
                     },
                     futuresTradingInstruction: {
                         externalLink: 'ссылку',
@@ -265,6 +272,8 @@ i18n.use(LanguageDetector)
                 },
             },
 
+            // Chinese Section
+
             cn: {
                 translation: {
                     // here we will place our translations...
@@ -275,7 +284,7 @@ i18n.use(LanguageDetector)
                         part3: '点击这里',
                     },
                     freeDonationComponent: {
-                        part1: '想要用10美元买咖啡吗 ?',
+                        part1: '希望赠送 10 美元的咖啡 ?',
                     },
                     futuresTradingInstruction: {
                         externalLink: '点击‘链接’',
@@ -328,34 +337,36 @@ i18n.use(LanguageDetector)
                 },
             },
 
+            // Spanish Section
+
             spa: {
                 translation: {
                     // here we will place our translations...
                     language: 'Idioma',
                     binanceReferalComponent: {
                         part1: '¿No tienes una cuenta en Binance? Crea y verifica tu cuenta utilizando el código de referencia que se encuentra a continuación',
-                        part2: 'Código de referencia de Binance',
+                        part2: 'Código de referencia de Binance: ',
                         part3: '¡Haz clic aquí!',
                     },
                     freeDonationComponent: {
-                        part1: '¿Quieres ofrecer $10 por un café?',
+                        part1: '¿Desea regalar 10 $ para un café?',
                     },
                     futuresTradingInstruction: {
                         externalLink: 'enlace',
                         title: 'Cómo usar esta calculadora de Binance',
                         step: 'Paso',
                         instruction1:
-                            "Si apuestas a que los precios subirán, elige 'Long'. Si apuestas contra el mercado, elige 'Short'.",
+                            'Si apuestas a que los precios subirán, elige ‘‘Comprar’’. Si apuestas contra el mercado, elige ‘‘Vender’’.',
                         instruction2:
-                            "Ingrese el costo o margen. Por ejemplo, si tienes 10,000 USDT en tu billetera de futuros USDS-M y deseas usar solo una parte, digamos 6,000, esta es la cantidad que ingresarás en el campo 'costo/margen'.",
+                            'Ingrese el costo o margen. Por ejemplo, si tienes 10,000 USDT en tu billetera de futuros USDS-M y deseas usar solo una parte, digamos 6,000, esta es la cantidad que ingresarás en el campo ‘‘Costo’’.',
                         instruction3: 'Establece tu precio de entrada.',
                         instruction4: 'Establece tu precio de salida.',
                         instruction5:
                             'Elige tu apalancamiento entre 1 y 50. Recuerda que el mercado de criptomonedas es muy volátil.',
                         instruction6:
-                            "Selecciona tu modo de margen: 'Aislado' o 'Cruzado'. Elegir 'Cruzado' significa que tu saldo disponible se utilizará para mantener tu posición abierta. De los 6,000 que usaste, puedes ahora ingresar un monto en el campo 'Saldo de la billetera' para ajustar tu precio de liquidación. Los 4,000 restantes podrían perderse totalmente si no hay un mecanismo de STOP-LOSS. En cambio, seleccionar 'Aislado' significa que solo tus 6,000 se perderán en caso de una liquidación.",
+                            "Selecciona tu modo de margen: ‘‘Aislado’’ o ‘‘Cruzado’’. Elegir ‘‘Cruzado’’ significa que tu saldo disponible se utilizará para mantener tu posición abierta. De los 6,000 que usaste, puedes ahora ingresar un monto en el campo 'Saldo de la billetera' para ajustar tu precio de liquidación. Los 4,000 restantes podrían perderse totalmente si no hay un mecanismo de STOP-LOSS. En cambio, seleccionar ‘‘Aislado’’ significa que solo tus 6,000 se perderán en caso de una liquidación.",
                         instruction7:
-                            'Selecciona una tasa de margen de mantenimiento, que varía según el par que negocies y el tamaño de tu posición. Puedes verificar esto con esta herramienta.',
+                            'Selecciona una tasa de margen de mantenimiento, que varía según el par que negocies y el tamaño de tu posición. Puedes verificar esto con esta herramienta',
                         instruction8:
                             'Haz clic en Calcular para conocer tu precio de liquidación y tus ganancias o pérdidas.',
                     },
@@ -391,6 +402,8 @@ i18n.use(LanguageDetector)
                     },
                 },
             },
+
+            // Italian Section
             it: {
                 translation: {
                     // here we will place our translations...
@@ -402,22 +415,22 @@ i18n.use(LanguageDetector)
                         part3: 'Clicca qui!!!',
                     },
                     freeDonationComponent: {
-                        part1: 'Vuoi offrire $10 per un caffè?',
+                        part1: 'Desidera regalare 10 dollari per un caffè?',
                     },
                     futuresTradingInstruction: {
                         externalLink: 'link',
                         title: 'Come usare questo calcolatore di Binance',
                         step: 'Passo',
                         instruction1:
-                            "Se prevedi un aumento dei prezzi, scegli 'Long'. Se prevedi una diminuzione, scegli 'Short'.",
+                            'Se prevedi un aumento dei prezzi, scegli ‘‘Acquista’’. Se prevedi una diminuzione, scegli ‘‘Vendi’’ .',
                         instruction2:
                             "Inserisci il costo o il margine. Ad esempio, se hai 10.000 USDT nel tuo portafoglio Futures USDS-M e vuoi usarne solo una parte, diciamo 6.000, questa è la somma che inserirai nel campo 'costo/margine'.",
                         instruction3: 'Imposta il tuo prezzo di entrata.',
                         instruction4: 'Imposta il tuo prezzo di uscita.',
                         instruction5:
-                            'Select your leverage between 1 and 50. Remember cryptocurrency market is very volatile',
-                        instruction6: `Select your margin mode "Isolated" or "Cross". Selecting "Cross" means your available balance will be used to keep your position open. Meaning of the 6,000 you used, you can now input an amount in the "Wallet Balance" field provided to adjust your liquidation price. The remaining 4,000 could be lost totally if the is no STOP-LOSS mechanism placed. On the other hand, selecting "Isolated", means only your 6,000 will be lost in the event of a liquidation`,
-                        instruction7: `Select a maintenance margin rate, which vary depending on the pair you trade and your position size. You can check this out using this `,
+                            'Seleziona la tua leva tra 1 e 50. Ricorda che il mercato delle criptovalute è molto volatile.',
+                        instruction6: `Seleziona la tua modalità di margine ‘‘Isolato’’ o ‘‘Incrociato’’. Selezionando "Incrociato" il tuo saldo disponibile sarà utilizzato per mantenere aperta la tua posizione. Significa che dei 6.000 che hai utilizzato, puoi ora inserire un importo nel campo ‘‘Saldo del portafoglio’’ fornito per regolare il tuo prezzo di liquidazione. I restanti 4.000 potrebbero essere persi totalmente se non è presente un meccanismo di STOP-LOSS. D'altra parte, selezionando ‘‘Isolato’’, significa che solo i tuoi 6.000 saranno persi in caso di liquidazione.`,
+                        instruction7: `Seleziona un tasso di margine di mantenimento, che varia a seconda della coppia che scambi e della dimensione della tua posizione. Puoi controllarlo usando questo`,
                         instruction8:
                             'Clicca su Calcola per conoscere il tuo prezzo di liquidazione e i tuoi profitti o perdite.',
                     },

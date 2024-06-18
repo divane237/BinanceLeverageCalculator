@@ -218,10 +218,10 @@ function BLCalculator() {
                         {t('blCalculatorComponent.marginMode')}
                     </p>
 
-                    <div className="my-2 flex flex-col items-stretch justify-center gap-y-2">
-                        <div className="flex justify-center gap-x-2 px-1 py-2">
+                    <div className="my-2 flex flex-col items-center gap-y-2">
+                        <div className="flex w-1/2 items-center justify-center gap-x-2 px-1 py-2">
                             <div
-                                className={`flex basis-1/4 gap-1 px-2 ${marginMode === 'cross' ? 'hover:cursor-not-allowed' : ''} `}
+                                className={`flex basis-1/2 justify-center gap-1 px-2 ${marginMode === 'cross' ? 'hover:cursor-not-allowed' : ''}`}
                             >
                                 <input
                                     type="checkbox"
@@ -248,7 +248,7 @@ function BLCalculator() {
                             </div>
                             {/*  */}
                             <div
-                                className={`flex basis-1/4 gap-1 px-2 ${marginMode === 'isolated' ? 'hover:cursor-not-allowed' : ''}`}
+                                className={`flex basis-1/2 gap-1 px-2 ${marginMode === 'isolated' ? 'hover:cursor-not-allowed' : ''} justify-center`}
                             >
                                 <input
                                     type="checkbox"
@@ -278,7 +278,7 @@ function BLCalculator() {
 
                         {marginMode === 'cross' && (
                             <InputSections
-                                title={'Wallet Balance'}
+                                title={t('blCalculatorComponent.walletBalance')}
                                 setInputSection={setWalletBalance}
                             />
                         )}
