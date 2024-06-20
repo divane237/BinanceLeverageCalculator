@@ -1,6 +1,6 @@
 function BNB() {
     return (
-        <svg width="30" height="30" viewBox="0 0 2496 2496">
+        <svg width="32" height="32" viewBox="0 0 2496 2496">
             <title>BinanceCoin-logo</title>
             <g>
                 <path

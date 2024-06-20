@@ -1,8 +1,8 @@
 function BTC() {
     return (
         <svg
-            width="30"
-            height="30"
+            wwidth="34"
+            height="34"
             version="1.1"
             shapeRendering="geometricPrecision"
             textRendering="geometricPrecision"

@@ -1,6 +1,6 @@
 function SHIB() {
     return (
-        <svg viewBox="0 0 641.7 649" height="30" width="30">
+        <svg viewBox="0 0 641.7 649" width="32" height="32">
             <g id="Group_938" transform="translate(-953.348 -232.003)">
                 <g id="Group_931">
                     <path

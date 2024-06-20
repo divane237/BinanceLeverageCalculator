@@ -1,8 +1,8 @@
 function ADA() {
     return (
         <svg
-            width="30"
-            height="30"
+            width="32"
+            height="32"
             viewBox="0 0 375 346.5"
             style={{ enableBackground: 'new 0 0 375 346.5' }}
         >

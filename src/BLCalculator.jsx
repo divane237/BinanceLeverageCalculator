@@ -62,8 +62,9 @@ function BLCalculator() {
     return (
         <div
             className={`mt-5 ${theme === 'light' ? 'text-black' : 'text-white'}`}
+            id="calculator"
         >
-            <h1 className="select-none text-center text-xl font-semibold">
+            <h1 className="select-none text-center text-xl font-bold">
                 USD
                 <span
                     className={`mx-[0.1rem] rounded-[50%] border-[1px] px-1.5 text-lg font-medium ${theme === 'light' ? 'border-black' : 'border-white'}`}

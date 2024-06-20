@@ -1,8 +1,8 @@
 function ETH() {
     return (
         <svg
-            width="30"
-            height="30"
+            width="32"
+            height="32"
             version="1.1"
             shapeRendering="geometricPrecision"
             textRendering="geometricPrecision"

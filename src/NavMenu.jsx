@@ -5,26 +5,25 @@ import { useState } from 'react';
 function NavMenu({ menu, setMenu, mounted, setMounted }) {
     const { t } = useTranslation();
 
-    const triggerAnimation = () => {
-        setContentVisibility((prevState) => {
-            return !prevState;
-        });
-    };
-
     const NAV_LINKS = [
         {
             // title: 'Binance Futures Calculator',
             title: t('navMenuComponent.link1'),
+            redirect: '#calculator',
             completed: true,
             comment: '',
         },
         {
+            // Info
             title: t('navMenuComponent.link2'),
+            redirect: '#main-article',
             completed: false,
             comment: '',
         },
         {
+            // InvesTrack
             title: t('navMenuComponent.link3'),
+            redirect: '',
             completed: false,
             comment: t('navMenuComponent.comment'),
         },
@@ -44,8 +43,14 @@ function NavMenu({ menu, setMenu, mounted, setMounted }) {
                     {NAV_LINKS.map((link, n) => (
                         <li className="w-full" key={n}>
                             <a
-                                href=""
+                                href={link.redirect}
                                 className="group top-0 block border-t-2 border-gray-400 py-2 text-center font-semibold hover:text-lg hover:text-sky-400"
+                                onClick={(e) => {
+                                    if (e.currentTarget.tagName === 'A') {
+                                        setMounted(false);
+                                        setMenu(false);
+                                    }
+                                }}
                             >
                                 {link.title}
                                 <span className="hidden text-xs text-red-500 group-hover:block">

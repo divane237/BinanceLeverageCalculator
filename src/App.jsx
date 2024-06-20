@@ -9,14 +9,15 @@ import FreeDonation from './FreeDonation';
 import ETH from './Currency Logos/ETH';
 import BNB from './Currency Logos/BNB';
 import SOL from './Currency Logos/SOL';
-import ADA from './Currency Logos/ADA';
 import BTC from './Currency Logos/BTC';
 import USDT from './Currency Logos/USDT';
 import DOGE from './Currency Logos/DOGE';
 import PEPE from './Currency Logos/PEPE';
 import SHIB from './Currency Logos/SHIB';
+import TON from './Currency Logos/TON';
 import SelectedWallets from './SelectedWallets';
-import TestingTransitions from './TestingTransitions';
+
+import CryptoArticle from './CryptoArticle';
 
 const initialWallets = [
     {
@@ -41,11 +42,11 @@ const initialWallets = [
         qrCode: '/walletsImages/SolanaWallet.jpg',
     },
     {
-        name: 'ADA',
-        wallet: 'bc1qxvmrwf7x0vlyq3xrqhg3cljtjvstzgy2xph429',
-        network: 'Cardano',
-        icon: <ADA />,
-        qrCode: '/walletsImages/CardanoWallet.jpg',
+        name: 'TON',
+        wallet: 'EQAdehNN-JJcXrTPyDI0iUUKp3gCcLObGLS2olJNKXCyULqP',
+        network: 'Toncoin',
+        icon: <TON />,
+        qrCode: '/walletsImages/TonWallet.jpg',
     },
     {
         name: 'BTC',
@@ -130,6 +131,7 @@ function App() {
                             <BLCalculator />
                             <BinanceReferal />
                             <FuturesTradingInstruction />
+                            <CryptoArticle />
                         </main>
                     </div>
                 </Language.Provider>

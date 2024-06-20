@@ -1,6 +1,6 @@
 function SOL() {
     return (
-        <svg width="30" height="30" x="0px" y="0px" viewBox="0 0 397.7 311.7">
+        <svg width="32" height="32" x="0px" y="0px" viewBox="0 0 397.7 311.7">
             <title>Salana-logo</title>
             <linearGradient
                 id="SVGID_1_"

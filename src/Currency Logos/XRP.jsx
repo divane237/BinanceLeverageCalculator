@@ -1,6 +1,6 @@
 function XRP() {
     return (
-        <svg viewBox="0 0 512 424" width="30" height="30">
+        <svg viewBox="0 0 512 424" width="32" height="32">
             <title>Ripple-logo</title>
             <g>
                 <g>

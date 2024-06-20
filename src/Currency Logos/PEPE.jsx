@@ -1,6 +1,6 @@
 function PEPE() {
     return (
-        <svg height="30" width="30" x="0px" y="0px" viewBox="0 0 512 512">
+        <svg width="32" height="32" x="0px" y="0px" viewBox="0 0 512 512">
             <title>Pepe-logo</title>
             <circle className="fill-[#3D8130]" cx="256" cy="256" r="256" />
             <path

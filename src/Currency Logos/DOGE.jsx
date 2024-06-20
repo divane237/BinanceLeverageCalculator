@@ -1,6 +1,6 @@
 function DOGE() {
     return (
-        <svg viewBox="0 0 1875 1875" width="30" height="30">
+        <svg viewBox="0 0 1875 1875" width="32" height="32">
             <title>Dogecoin (DOGE)</title>
             <g id="Layer_2" data-name="Layer 2">
                 <g id="Layer_1-2" data-name="Layer 1">

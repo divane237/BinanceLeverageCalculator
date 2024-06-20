@@ -41,7 +41,7 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
             document.body.style.overflow = 'unset';
         };
     }, [copied]);
-
+    //
     const wallets = useContext(WalletContext);
 
     const displayWallet = wallets.filter(
@@ -78,7 +78,6 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
             className="animate-wallet absolute left-1/2 top-1/2 z-[51] flex h-full w-full origin-center  -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center bg-slate-400/20 backdrop-blur-lg"
             onClick={closeWallet}
             onAnimationEnd={() => {
-                console.log('Animation End');
                 setAnimateWallet(true);
             }}
         >
@@ -102,9 +101,9 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
                         className="h-[300px] w-1/2 select-none"
                     ></div>
                     {/* Wallet address  */}
-                    <div className="relative my-4 flex flex-col items-center text-sm lg:text-base">
+                    <div className="relative my-4 flex flex-col items-center text-xs sm:text-sm lg:text-base">
                         <p
-                            className={`copy ${theme === 'light' ? 'bg-white' : 'bg-black'} m-1 rounded-full border-2 px-3 py-2 font-mono`}
+                            className={`copy ${theme === 'light' ? 'bg-white' : 'bg-black'} m-1 whitespace-nowrap rounded-full border-2 px-3 py-2 font-mono`}
                             id="copy2"
                         >
                             {displayWallet[0].wallet}{' '}
