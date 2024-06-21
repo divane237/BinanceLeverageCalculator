@@ -4,7 +4,7 @@ function BinanceReferal() {
     const { t } = useTranslation();
 
     return (
-        <div className="col-span-2 mt-10 p-5 text-center lg:col-start-1">
+        <div className="my-3 p-5 text-center lg:col-span-2 lg:col-start-1">
             <div className="my-2 text-base">
                 {t('binanceReferalComponent.part1')}
                 <p className="my-2">

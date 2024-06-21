@@ -36,27 +36,6 @@ function NavMenu({ menu, setMenu, mounted, setMounted }) {
 
     const author = 'Divane';
 
-    //
-    useEffect(() => {
-        if (articleRef.current) {
-            articleRef.current.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
-        }
-    }, [articleRef.current]); // Ensure to include relevant dependencies
-
-    useEffect(() => {
-        if (calculatorRef.current) {
-            calculatorRef.current.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
-        }
-    }, [calculatorRef.current]); // Ensure to include relevant dependencies
-
-    //
-
     const handleScroll2 = () => {
         console.log('Article Ref', articleRef.current);
         if (articleRef.current) {
@@ -76,7 +55,7 @@ function NavMenu({ menu, setMenu, mounted, setMounted }) {
             });
         }
     };
-    // className={`${mounted ? 'animate-menu' : 'animate-exit'} absolute top-0 z-50 h-[0dvh] font-poppins backdrop-blur-2xl `}
+
     return (
         menu && (
             <div
@@ -93,20 +72,18 @@ function NavMenu({ menu, setMenu, mounted, setMounted }) {
                                 id={link.id}
                                 className="group top-0 block border-t-2 border-gray-400 py-2 text-center font-semibold hover:text-lg hover:text-sky-400"
                                 onClick={(e) => {
+                                    e.preventDefault();
                                     if (link.id === 0) {
                                         //
                                         handleScroll1();
-                                    }
-
-                                    if (link.id === 1) {
+                                    } else if (link.id === 1) {
                                         handleScroll2();
                                         //
                                     }
-                                    e.preventDefault();
-                                    if (e.currentTarget.tagName === 'A') {
-                                        setMounted(false);
-                                        setMenu(false);
-                                    }
+                                    setMounted(false);
+                                    setMenu(false);
+                                    // if (e.currentTarget.tagName === 'A') {
+                                    // }
                                 }}
                             >
                                 {link.title}

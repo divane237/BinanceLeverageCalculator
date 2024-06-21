@@ -136,9 +136,7 @@ function App() {
                             )}
                             <NavBar setTheme={setTheme} />
 
-                            <main
-                                className={`main overscroll-y-none lg:grid lg:grid-cols-2`}
-                            >
+                            <main className={`main lg:grid lg:grid-cols-2`}>
                                 <BLCalculator />
                                 <BinanceReferal />
                                 <FuturesTradingInstruction />
