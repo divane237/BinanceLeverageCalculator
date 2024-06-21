@@ -160,12 +160,14 @@ function NavBar({ setTheme }) {
             </div>
 
             {/* Menu */}
-            <NavMenu
-                menu={menu}
-                setMenu={setMenu}
-                mounted={mounted}
-                setMounted={setMounted}
-            />
+            <div className="relative w-full">
+                <NavMenu
+                    menu={menu}
+                    setMenu={setMenu}
+                    mounted={mounted}
+                    setMounted={setMounted}
+                />
+            </div>
         </div>
     );
 }

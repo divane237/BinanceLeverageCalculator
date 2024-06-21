@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import BLCalculator from './BLCalculator';
 import BinanceReferal from './BinanceReferal';
 import NavBar from './NavBar';
-import { Language, ThemeContext, WalletContext } from './context/Contexts';
+import {
+    Language,
+    ThemeContext,
+    WalletContext,
+    Scroll,
+} from './context/Contexts';
 import FuturesTradingInstruction from './FuturesTradingInstruction';
 
 import FreeDonation from './FreeDonation';
@@ -100,6 +105,9 @@ function App() {
     const [wallets, setWallets] = useState(initialWallets);
     const [selectedWallet, setSelectedWallet] = useState(null);
 
+    const articleRef = useRef();
+    const calculatorRef = useRef();
+
     useEffect(() => {
         document.body.style.backgroundColor =
             theme === 'light' ? '#EEE' : '#393E46';
@@ -109,31 +117,35 @@ function App() {
         <ThemeContext.Provider value={theme}>
             <WalletContext.Provider value={wallets}>
                 <Language.Provider value={lngs}>
-                    <div
-                        className={` ${
-                            theme === 'light'
-                                ? 'bg-[#EEE] text-black'
-                                : 'bg-[#393E46] text-white'
-                        }`}
-                    >
-                        <FreeDonation setSelectedWallet={setSelectedWallet} />
-                        {selectedWallet && (
-                            <SelectedWallets
-                                selectedWallet={selectedWallet}
+                    <Scroll.Provider value={{ articleRef, calculatorRef }}>
+                        <div
+                            className={` ${
+                                theme === 'light'
+                                    ? 'bg-[#EEE] text-black'
+                                    : 'bg-[#393E46] text-white'
+                            }`}
+                        >
+                            <FreeDonation
                                 setSelectedWallet={setSelectedWallet}
                             />
-                        )}
-                        <NavBar setTheme={setTheme} />
+                            {selectedWallet && (
+                                <SelectedWallets
+                                    selectedWallet={selectedWallet}
+                                    setSelectedWallet={setSelectedWallet}
+                                />
+                            )}
+                            <NavBar setTheme={setTheme} />
 
-                        <main
-                            className={`main overscroll-y-none lg:grid lg:grid-cols-2`}
-                        >
-                            <BLCalculator />
-                            <BinanceReferal />
-                            <FuturesTradingInstruction />
-                            <CryptoArticle />
-                        </main>
-                    </div>
+                            <main
+                                className={`main overscroll-y-none lg:grid lg:grid-cols-2`}
+                            >
+                                <BLCalculator />
+                                <BinanceReferal />
+                                <FuturesTradingInstruction />
+                                <CryptoArticle />
+                            </main>
+                        </div>
+                    </Scroll.Provider>
                 </Language.Provider>
             </WalletContext.Provider>
         </ThemeContext.Provider>

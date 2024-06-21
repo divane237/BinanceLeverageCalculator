@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { ThemeContext } from './context/Contexts';
+import { Scroll, ThemeContext } from './context/Contexts';
 import InputSections from './InputSections';
 import { useTranslation } from 'react-i18next';
 
@@ -14,6 +14,9 @@ function BLCalculator() {
     const [maintenanceMarginRate, setMaintenanceMarginRate] = useState(0.004);
     const [liqPrice, setLiqPrice] = useState(null);
     const [pl, setPL] = useState(null);
+
+    const { calculatorRef } = useContext(Scroll);
+
     const { t } = useTranslation();
 
     const theme = useContext(ThemeContext);
@@ -61,8 +64,8 @@ function BLCalculator() {
 
     return (
         <div
-            className={`mt-5 ${theme === 'light' ? 'text-black' : 'text-white'}`}
-            id="calculator"
+            className={`mt-5 ${theme === 'light' ? 'text-black' : 'text-white'} `}
+            ref={calculatorRef}
         >
             <h1 className="select-none text-center text-xl font-bold">
                 USD

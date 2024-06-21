@@ -12,7 +12,7 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
         // The copy wallet address code
 
         const copyClipboard = async () => {
-            // navigator.permissions
+            // await navigator.permissions
             //     .query({ name: 'write-on-clipboard' })
             //     .then((result) => {
             //         if (result.state == 'granted' || result.state == 'prompt') {
@@ -20,7 +20,6 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
             //         }
             //     });
 
-            // console.log('The copy clipboard function is executed');
             try {
                 await navigator.clipboard.writeText(displayWallet[0].wallet);
             } catch (err) {
@@ -30,7 +29,6 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
 
         // Once copy icon is clicked, wallet is copied to the clipboard
 
-        // console.log(copied);
         (copied || !copied) && copyClipboard();
 
         // Disable the scroll bar when menu is open
@@ -72,7 +70,7 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
         // setCopied(false);
         setSelectedWallet(!selectedWallet);
     }
-    // animate-wallet absolute left-1/2 top-1/2 z-[51] flex h-full w-full origin-center  -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center bg-slate-400/20 backdrop-blur-lg
+
     return (
         <div
             className="animate-wallet absolute left-1/2 top-1/2 z-[51] flex h-full w-full origin-center  -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center bg-slate-400/20 backdrop-blur-lg"
@@ -80,6 +78,7 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
             onAnimationEnd={() => {
                 setAnimateWallet(true);
             }}
+            tabIndex={-1}
         >
             {animateWallet && (
                 <>

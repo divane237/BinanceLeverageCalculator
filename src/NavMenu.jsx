@@ -1,40 +1,86 @@
 import { useTranslation } from 'react-i18next';
 import LanguageSelection from './LanguageSelection';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Scroll } from './context/Contexts';
 
 function NavMenu({ menu, setMenu, mounted, setMounted }) {
+    const { articleRef, calculatorRef } = useContext(Scroll);
+
     const { t } = useTranslation();
 
     const NAV_LINKS = [
         {
             // title: 'Binance Futures Calculator',
             title: t('navMenuComponent.link1'),
-            redirect: '#calculator',
             completed: true,
             comment: '',
+            id: 0,
         },
         {
             // Info
             title: t('navMenuComponent.link2'),
-            redirect: '#main-article',
+
             completed: false,
             comment: '',
+            id: 1,
         },
         {
             // InvesTrack
             title: t('navMenuComponent.link3'),
-            redirect: '',
+
             completed: false,
             comment: t('navMenuComponent.comment'),
+            id: 2,
         },
     ];
 
     const author = 'Divane';
 
+    //
+    useEffect(() => {
+        if (articleRef.current) {
+            articleRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+    }, [articleRef.current]); // Ensure to include relevant dependencies
+
+    useEffect(() => {
+        if (calculatorRef.current) {
+            calculatorRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+    }, [calculatorRef.current]); // Ensure to include relevant dependencies
+
+    //
+
+    const handleScroll2 = () => {
+        console.log('Article Ref', articleRef.current);
+        if (articleRef.current) {
+            articleRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+    };
+
+    const handleScroll1 = () => {
+        console.log('Calculator Ref', calculatorRef.current);
+        if (calculatorRef.current) {
+            calculatorRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+        }
+    };
+    // className={`${mounted ? 'animate-menu' : 'animate-exit'} absolute top-0 z-50 h-[0dvh] font-poppins backdrop-blur-2xl `}
     return (
         menu && (
             <div
-                className={`${mounted ? 'animate-menu' : 'animate-exit'} relative top-0 z-50 h-[100dvh] font-poppins backdrop-blur-2xl `}
+                className={`${mounted ? 'animate-menu' : 'animate-exit'} absolute right-0 top-0 h-[100dvh] w-full font-poppins backdrop-blur-2xl`}
                 onAnimationEnd={() => {
                     if (!mounted) setMenu(false);
                 }}
@@ -43,9 +89,20 @@ function NavMenu({ menu, setMenu, mounted, setMounted }) {
                     {NAV_LINKS.map((link, n) => (
                         <li className="w-full" key={n}>
                             <a
-                                href={link.redirect}
+                                href=""
+                                id={link.id}
                                 className="group top-0 block border-t-2 border-gray-400 py-2 text-center font-semibold hover:text-lg hover:text-sky-400"
                                 onClick={(e) => {
+                                    if (link.id === 0) {
+                                        //
+                                        handleScroll1();
+                                    }
+
+                                    if (link.id === 1) {
+                                        handleScroll2();
+                                        //
+                                    }
+                                    e.preventDefault();
                                     if (e.currentTarget.tagName === 'A') {
                                         setMounted(false);
                                         setMenu(false);

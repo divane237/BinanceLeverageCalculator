@@ -2,14 +2,12 @@ function TON() {
     return (
         <svg
             version="1.1"
-            id="Layer_1"
             viewBox="0 0 56 56"
             width="32"
             height="32"
             style={{ enableBackground: 'new 0 0 56 56' }}
-            xml:space="preserve"
         >
-            <circle class="st0" cx="28" cy="28" r="28" fill="#0088CC" />
+            <circle cx="28" cy="28" r="28" fill="#0088CC" />
             <path
                 d="M20.2,18.5h15.7c0.6,0,1.1,0.1,1.7,0.4c0.7,0.3,1.1,0.8,1.3,1.2c0,0,0,0.1,0.1,0.1c0.3,0.5,0.5,1.1,0.5,1.8
    c0,0.6-0.1,1.2-0.5,1.8c0,0,0,0,0,0l-9.9,17c-0.2,0.4-0.6,0.6-1.1,0.6c-0.4,0-0.8-0.2-1.1-0.6l-9.7-17c0,0,0,0,0,0
