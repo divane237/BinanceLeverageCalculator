@@ -3,7 +3,7 @@ import { Language, ThemeContext } from './context/Contexts';
 import { useTranslation } from 'react-i18next';
 import i18n from './Translation/i18n';
 
-function LanguageSelection({ setMenu }) {
+function LanguageSelection({ setMenu, setMounted }) {
     // useEffect(() => {
     //     setDefaultLang(localStorage.getItem('i18nextLng'));
     // }, []);
@@ -20,11 +20,11 @@ function LanguageSelection({ setMenu }) {
                 onChange={(e) => {
                     i18n.changeLanguage(e.target.value);
                     setMenu(false);
+                    setMounted(false);
                 }}
                 defaultValue={localStorage.getItem('i18nextLng')}
                 className={`${theme === 'light' ? 'bg-[#EEE] text-black' : 'bg-[#393E46] text-white'} rounded-xl border-[1px] border-gray-400 px-2 py-1.5`}
             >
-                {/* {console.log(defaultLang)} */}
                 {Object.keys(lngs).map((lng) => (
                     <option key={lng} value={lng}>
                         {lngs[lng].nativeName}
@@ -36,19 +36,3 @@ function LanguageSelection({ setMenu }) {
 }
 
 export default LanguageSelection;
-
-/* <select
-                name="language"
-                id=""
-                className={`${theme === 'light' ? 'bg-[#EEE] text-black' : 'bg-[#393E46] text-white'} rounded-xl border-[1px] border-gray-400 px-2 py-1.5`}
-                onChange={(e) => {
-                    // i18n.changeLanguage(value);
-                    console.log(e.target.value);
-                }}
-            >
-                <option value="English">EN</option>
-                <option value="French">FR</option>
-                <option value="German">GE</option>
-                <option value="Spanish">SPA</option>
-                <option value="Italian">IT</option>
-            </select> */

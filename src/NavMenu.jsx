@@ -95,7 +95,7 @@ function NavMenu({ menu, setMenu, mounted, setMounted }) {
                     ))}
                 </ul>
 
-                <LanguageSelection setMenu={setMenu} />
+                <LanguageSelection setMenu={setMenu} setMounted={setMounted} />
 
                 <div className="absolute bottom-[26%] left-1/2 mx-2 mt-1 flex -translate-x-1/2 items-stretch justify-center gap-3 py-2">
                     <p className="whitespace-nowrap px-4 py-2">
