@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import LanguageSelection from './LanguageSelection';
-import { useContext, useEffect, useState } from 'react';
-import { Scroll } from './context/Contexts';
+import { useFixProps } from './context/MyProviders';
 
 function NavMenu({ menu, setMenu, mounted, setMounted }) {
-    const { articleRef, calculatorRef } = useContext(Scroll);
+    const { articleRef, calculatorRef } = useFixProps();
 
     const { t } = useTranslation();
 

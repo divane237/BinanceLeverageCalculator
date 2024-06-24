@@ -1,5 +1,3 @@
-// https://www.binance.com/en/support/announcement/binance-futures-will-update-the-leverage-margin-tiers-and-capped-funding-rate-of-multiple-usd%E2%93%A2-m-perpetual-contracts-2023-11-06-9c88b57603534ad68444e209ea9d9c28
-
 import { useTranslation } from 'react-i18next';
 
 function FuturesTradingInstruction() {
@@ -36,7 +34,6 @@ function FuturesTradingInstruction() {
     return (
         <div className="lg:col-start-2 lg:row-start-1 lg:my-4">
             <h1 className="text-center text-xl font-bold">
-                {/* How to use this Binance calculator */}
                 {t('futuresTradingInstruction.title')}
             </h1>
             <ul className="mt-3 px-2 py-2">

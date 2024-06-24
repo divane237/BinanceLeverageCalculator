@@ -1,10 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
-import { ThemeContext, WalletContext } from './context/Contexts';
+import { useEffect, useState } from 'react';
+
 import { useTranslation } from 'react-i18next';
+import { useFixProps, useTheme } from './context/MyProviders';
 
 function SelectedWallets({ selectedWallet, setSelectedWallet }) {
     const [copied, setCopied] = useState(false);
     const [animateWallet, setAnimateWallet] = useState(false);
+
+    const { wallets } = useFixProps();
+
+    const { theme } = useTheme();
 
     const { t } = useTranslation();
 
@@ -12,14 +17,6 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
         // The copy wallet address code
 
         const copyClipboard = async () => {
-            // await navigator.permissions
-            //     .query({ name: 'write-on-clipboard' })
-            //     .then((result) => {
-            //         if (result.state == 'granted' || result.state == 'prompt') {
-            //             alert('Write access granted!');
-            //         }
-            //     });
-
             try {
                 await navigator.clipboard.writeText(displayWallet[0].wallet);
             } catch (err) {
@@ -40,13 +37,10 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
         };
     }, [copied]);
     //
-    const wallets = useContext(WalletContext);
 
     const displayWallet = wallets.filter(
         (wallet) => wallet.name === selectedWallet,
     );
-
-    const theme = useContext(ThemeContext);
 
     // Function to notify that wallet address has been copied
 
@@ -73,7 +67,7 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
 
     return (
         <div
-            className="animate-wallet absolute left-1/2 top-1/2 z-[51] flex h-full w-full origin-center  -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center bg-slate-400/20 backdrop-blur-lg"
+            className="absolute left-1/2 top-1/2 z-[51] flex h-full w-full origin-center -translate-x-1/2  -translate-y-1/2 animate-wallet flex-col items-center justify-center bg-slate-400/20 backdrop-blur-lg"
             onClick={closeWallet}
             onAnimationEnd={() => {
                 setAnimateWallet(true);
@@ -99,6 +93,7 @@ function SelectedWallets({ selectedWallet, setSelectedWallet }) {
                         }}
                         className="h-[300px] w-1/2 select-none"
                     ></div>
+
                     {/* Wallet address  */}
                     <div className="relative my-4 flex flex-col items-center text-xs sm:text-sm lg:text-base">
                         <p

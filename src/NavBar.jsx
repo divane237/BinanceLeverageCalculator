@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
-import { ThemeContext } from './context/Contexts';
-import NavMenu from './NavMenu';
+import { useEffect, useState } from 'react';
 
-function NavBar({ setTheme }) {
+import NavMenu from './NavMenu';
+import { useTheme } from './context/MyProviders';
+
+function NavBar() {
     const [menu, setMenu] = useState(false);
     const [mounted, setMounted] = useState(false);
 
-    const theme = useContext(ThemeContext);
+    const { theme, setTheme } = useTheme();
 
     useEffect(() => {
         menu

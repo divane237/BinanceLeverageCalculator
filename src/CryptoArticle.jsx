@@ -1,9 +1,9 @@
-import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Scroll } from './context/Contexts';
+
+import { useFixProps } from './context/MyProviders';
 
 function CryptoArticle() {
-    const { articleRef } = useContext(Scroll);
+    const { articleRef } = useFixProps();
 
     const { t } = useTranslation();
 

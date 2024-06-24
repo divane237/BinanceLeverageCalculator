@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
-import { Scroll, ThemeContext } from './context/Contexts';
+import { useState } from 'react';
 import InputSections from './InputSections';
 import { useTranslation } from 'react-i18next';
+import { useFixProps, useTheme } from './context/MyProviders';
 
 function BLCalculator() {
     const [margin, setMargin] = useState(0);
@@ -15,11 +15,10 @@ function BLCalculator() {
     const [liqPrice, setLiqPrice] = useState(null);
     const [pl, setPL] = useState(null);
 
-    const { calculatorRef } = useContext(Scroll);
+    const { calculatorRef } = useFixProps();
+    const { theme } = useTheme();
 
     const { t } = useTranslation();
-
-    const theme = useContext(ThemeContext);
 
     const formatedPL = new Intl.NumberFormat('en-US').format(Math.abs(pl));
 

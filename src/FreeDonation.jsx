@@ -1,22 +1,19 @@
-import { useContext } from 'react';
-
-import { WalletContext } from './context/Contexts';
 import { useTranslation } from 'react-i18next';
+import { useFixProps } from './context/MyProviders';
 
 function FreeDonation({ className, setSelectedWallet }) {
     const { t } = useTranslation();
 
-    const wallets = useContext(WalletContext);
+    const { wallets } = useFixProps();
 
     return (
         <div className={className}>
-            {/* <p className="mb-2 text-center">Want to offer $10 for coffee ?</p> */}
-            <p className="mb-2 text-center">
+            <p className="mb-2 text-center font-lato font-semibold">
                 {t('freeDonationComponent.part1')}
             </p>
 
             <div className="mb-3 flex justify-around">
-                {wallets.map((wallet, i) => (
+                {wallets.map((wallet) => (
                     <button
                         className="m-1"
                         onClick={() => setSelectedWallet(wallet.name)}
